@@ -201,8 +201,8 @@ MonoBehaviour:
   alignmentPriority: 90
   separationRadius: 10
   separationPriority: 90
-  avoidanceRadius: 0
-  avoidancePriority: 0
+  avoidanceRadius: 40
+  avoidancePriority: 700
 --- !u!1 &1707632745
 GameObject:
   m_ObjectHideFlags: 0

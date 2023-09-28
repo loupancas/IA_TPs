@@ -39,7 +39,7 @@ public class Member : MonoBehaviour
         wanderTarget += new Vector3(RandomBinomial() * jitter, RandomBinomial() * jitter, 0);
         wanderTarget = wanderTarget.normalized;
         wanderTarget *= conf.wanderRadius;
-        Vector3 targetInLocalSpace = wanderTarget + new Vector3(0, conf.wanderDistance, 0);
+        Vector3 targetInLocalSpace = wanderTarget + new Vector3(conf.wanderDistance, conf.wanderDistance, 0);
         Vector3 targetInWorldSpace = transform.TransformPoint(targetInLocalSpace);
         targetInWorldSpace -= this.position;
         return targetInWorldSpace.normalized;
@@ -111,9 +111,30 @@ public class Member : MonoBehaviour
         return separateVector.normalized;
     }
 
+    Vector3 Avoidance()
+    {
+        Vector3 avoidVector = new Vector3();
+        var enemyList = Level.GetEnemies(this, conf.avoidanceRadius);
+        if (enemyList.Count == 0)
+            return avoidVector;
+        foreach (var enemy in enemyList)
+        {
+            avoidVector += Flee(enemy.position);
+
+        }
+        return avoidVector.normalized;
+    }
+
+    Vector3 Flee(Vector3 target)
+    {
+        Vector3 neededVelocity = (position - target).normalized * conf.maxVelocity;
+        return neededVelocity - velocity;
+    }
+
     virtual protected Vector3 Combine()
     {
-        Vector3 finalVec = conf.cohesionPriority * Cohesion() + conf.wanderPriority * Wander() + conf.alignmentPriority * Alignment()+conf.separationPriority*Separation();
+        Vector3 finalVec = conf.cohesionPriority * Cohesion() + conf.wanderPriority * Wander() + conf.alignmentPriority * Alignment()+conf.separationPriority*Separation()
+            +conf.avoidancePriority*Avoidance();
         return finalVec;
     }
 
