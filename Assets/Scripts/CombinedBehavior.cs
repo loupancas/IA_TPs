@@ -17,7 +17,7 @@ public class CombinedBehavior : MonoBehaviour
     public float cohesionWeight = 1f;
     public float evadeRadius = 5f;
     public float fleeRadius = 7f;  // Radius to start fleeing from the target
-
+   
     private Renderer renderer;
 
     void Start()
@@ -70,7 +70,7 @@ public class CombinedBehavior : MonoBehaviour
         {
             Vector3 direction = target.position - transform.position;
             float distance = direction.magnitude;
-
+          
             if (distance > 0)
             {
                 float targetSpeed = distance > slowingRadius ? seekSpeed : arriveSpeed * (distance / slowingRadius);
@@ -81,6 +81,8 @@ public class CombinedBehavior : MonoBehaviour
 
                 // Change color for seek/arrive behavior
                 renderer.material.color = Color.red;
+
+                //Eat
             }
         }
 
@@ -131,7 +133,23 @@ public class CombinedBehavior : MonoBehaviour
 
         // Change color for flocking behavior
         renderer.material.color = Color.blue;
+
+        
+
+
     }
+
+    void Eat(Collision2D other)
+    {
+
+        if (other.gameObject.CompareTag("Food"))
+        {
+            // Eat
+            Destroy(gameObject);
+        }
+    }
+
+
 }
 
 
