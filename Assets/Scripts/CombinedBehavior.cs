@@ -56,6 +56,8 @@ public class CombinedBehavior : MonoBehaviour
                 RefreshTargetPoint();
 
             }
+
+            renderer.material.color = Color.green;
         }    
         
 
@@ -72,7 +74,7 @@ public class CombinedBehavior : MonoBehaviour
                 Vector3 fleeDirection = (transform.position - cazador.position).normalized;
                 transform.position += fleeDirection * seekSpeed * Time.deltaTime;
 
-                // Change color for flee behavior
+                // Cambia color para flee behavior
                 renderer.material.color = Color.magenta;
 
                 return;  // Skip other behaviors when fleeing
@@ -95,7 +97,7 @@ public class CombinedBehavior : MonoBehaviour
                 Vector3 evasionDirection = (transform.position - obstacle.position).normalized;
                 transform.position += evasionDirection * seekSpeed * Time.deltaTime;
 
-                // Change color for evade behavior
+                // Cambia color para evade behavior
                 renderer.material.color = Color.yellow;
 
                 return;  // Skip other behaviors when evading
@@ -118,7 +120,7 @@ public class CombinedBehavior : MonoBehaviour
                 direction.Normalize();
                 transform.position += direction * targetSpeed * Time.deltaTime;
 
-                // Change color for seek/arrive behavior
+                // Cambia color para seek/arrive behavior
                 renderer.material.color = Color.red;
 
                 //Eat
@@ -159,18 +161,18 @@ public class CombinedBehavior : MonoBehaviour
             }
         }
 
-        // Apply the three rules
+        // Combina separation aligment y cohesion
         separation *= separationWeight;
         alignment *= alignmentWeight;
         cohesion = ((cohesion / flockers.Length) - (Vector2)transform.position).normalized * cohesionWeight;
 
-        // Combine the forces
+        // Combine fuerzas
         Vector2 combinedForce = separation + alignment + cohesion;
 
-        // Move the object
+        // Mueve el objeto
         transform.position += (Vector3)combinedForce * Time.deltaTime;
 
-        // Change color for flocking behavior
+        // Cambia color para flocking behavior
         renderer.material.color = Color.blue;
 
         
@@ -185,6 +187,7 @@ public class CombinedBehavior : MonoBehaviour
             Debug.Log("detecto comida");
             isRover = false;
             transform.position = Vector2.MoveTowards(transform.position, collision.transform.position, arriveSpeed * Time.deltaTime);
+            Destroy(gameObject);
         }
     }
 
