@@ -17,16 +17,49 @@ public class CombinedBehavior : MonoBehaviour
     public float cohesionWeight = 1f;
     public float evadeRadius = 5f;
     public float fleeRadius = 7f;  // Radius to start fleeing from the target
-   
+    bool isRover; //deambulando
+
+    [SerializeField] Camera _camera;
+    [SerializeField] int _offsetX;
+    [SerializeField] int _offsetY;
+    int _randomX;
+    int _randomY;
+    public Vector2 currentTargetPoint;
+    public float speed=1.5f;
+
     private Renderer renderer;
 
     void Start()
     {
         renderer = GetComponent<Renderer>();
+        isRover = true;
+        RefreshTargetPoint();
+       
+    }
+
+    void RefreshTargetPoint()
+    {
+        currentTargetPoint = RandomCoordinates(); //buscar otro punto
+        Debug.Log(currentTargetPoint);
     }
 
     void Update()
     {
+        if(isRover)
+        {
+            // transform.position = Vector2.MoveTowards(transform.position, currentTargetPoint, speed * Time.deltaTime); //deambular
+
+            Vector2 direction = (currentTargetPoint - (Vector2)transform.position).normalized;
+            transform.position += (Vector3)(direction * speed * Time.deltaTime);
+            if (Vector2.Distance(transform.position, currentTargetPoint) < 0.01f)
+            {
+                RefreshTargetPoint();
+
+            }
+        }    
+        
+
+
         // Flee behavior
         if (cazador != null)
         {
@@ -35,6 +68,7 @@ public class CombinedBehavior : MonoBehaviour
 
             if (distanceToTarget < fleeRadius)
             {
+                isRover = false;
                 Vector3 fleeDirection = (transform.position - cazador.position).normalized;
                 transform.position += fleeDirection * seekSpeed * Time.deltaTime;
 
@@ -42,6 +76,11 @@ public class CombinedBehavior : MonoBehaviour
                 renderer.material.color = Color.magenta;
 
                 return;  // Skip other behaviors when fleeing
+            }
+            else
+            {
+                isRover = true;
+
             }
         }
 
@@ -139,6 +178,16 @@ public class CombinedBehavior : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Food"))
+        {
+            Debug.Log("detecto comida");
+            isRover = false;
+            transform.position = Vector2.MoveTowards(transform.position, collision.transform.position, arriveSpeed * Time.deltaTime);
+        }
+    }
+
     void Eat(Collision2D other)
     {
 
@@ -149,6 +198,16 @@ public class CombinedBehavior : MonoBehaviour
         }
     }
 
+    Vector2 RandomCoordinates()
+    {
+        _randomX = Random.Range(0 + _offsetX, Screen.width - _offsetX);
+        _randomY = Random.Range(0 + _offsetY, Screen.height - _offsetY);
+
+        Vector2 coordinates = new Vector2(_randomX, _randomY);
+
+        Vector2 screenToWorldPosition = _camera.ScreenToWorldPoint(coordinates);
+        return screenToWorldPosition;
+    }
 
 }
 

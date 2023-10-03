@@ -7,30 +7,49 @@ public class Spawn : MonoBehaviour
     [SerializeField] Camera _camera;
     [SerializeField] int _offsetX;
     [SerializeField] int _offsetY;
-    [SerializeField] Transform[] _objectTransforms; // Change from GameObject[] to Transform[]
-    Transform _spawnedObjectTransform; // Change from GameObject to Transform
+    [SerializeField] GameObject _foodPrefab;
+    [SerializeField] GameObject _obstaclePrefab;
+    public int maxFood = 5;
+    public int minFood = 3;
+
+    public int maxObstacle = 5;
+    public int minObstacle = 3;
+
 
     int _randomX;
     int _randomY;
 
     void Start()
     {
+        int instantiateCountFood = Random.Range(minFood, maxFood);
+        int instantiateCountObstacles = Random.Range(minObstacle, maxObstacle);
 
+
+        for (int i = 0; i < instantiateCountFood; i++)
+        {
+            Spawner(_foodPrefab);
+        }
+
+        for (int i = 0; i < instantiateCountObstacles; i++)
+        {
+            Spawner(_obstaclePrefab);
+        }
+
+        
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        /*if (Input.GetKeyDown(KeyCode.Space))
         {
             Spawner();
-        }
+        }*/
     }
 
-    void Spawner()
+    void Spawner(GameObject prefab)
     {
-        int transformId = Random.Range(0, _objectTransforms.Length);
         Vector2 position = RandomCoordinates();
-        _spawnedObjectTransform = Instantiate(_objectTransforms[transformId], position, Quaternion.identity);
+        GameObject go = Instantiate(prefab, position, Quaternion.identity);
     }
 
     Vector2 RandomCoordinates()

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Flocker
   - Food
+  - Obstacle
   layers:
   - Default
   - TransparentFX
