@@ -13,7 +13,7 @@ public class HunterCore : MonoBehaviour
 
     [Header ("variables")]
 
-    public float speed, energy,MaxEnegy, VisionRadius;
+    public float speed, energy,MaxEnegy, VisionRadius,rotspeed;
     protected float TimerEnergy, Pulse;
   
 
