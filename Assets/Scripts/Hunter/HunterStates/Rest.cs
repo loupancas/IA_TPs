@@ -31,15 +31,19 @@ public class Rest : State
         if(pulse >= Timer)
         {
             hunterCore.energy = hunterCore.MaxEnegy;
-            ChooseNextState();
+            //ChooseNextState();
+            HunterStateMachine.SwitchtoNewState(PatrolState);
+            pulse = 0;
+            return PatrolState;
         }
         else
         {
             pulse += Time.deltaTime;
-            
+            return this;
+
         }
-   
-        return this;
+    
+        
 
     }
 
