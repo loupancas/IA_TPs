@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,7 @@ public class HunterCore : MonoBehaviour
 
     public float speed, energy,MaxEnegy, VisionRadius,rotspeed;
     protected float TimerEnergy, Pulse;
+    public bool HasTarget;
   
 
 
@@ -47,20 +49,37 @@ public class HunterCore : MonoBehaviour
             StateMachine.RunStateMachine();
         }
 
+        CheckforTargets();
+
+
     }
 
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void CheckforTargets()
     {
-        if (collision.CompareTag("Flocker"))
+       if(Boids.Count> 0)
+       {
+            HasTarget= true;
+            StateMachine.HoontTime = true;
+       }
+        else
+        {
+            HasTarget = false;
+            StateMachine.HoontTime = false;
+        }
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        print("See somfin");
+        if (collision.CompareTag("Flocker") || collision.tag == "Flocker")
         {
            Boids.Add(collision.gameObject);
         }
-        else
-        {
-            return;
-        }
+      
     }
+
+
 
 
     private void OnTriggerExit2D(Collider2D collision)

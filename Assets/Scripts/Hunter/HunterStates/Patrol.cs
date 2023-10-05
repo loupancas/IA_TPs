@@ -13,11 +13,12 @@ public class Patrol : State
     [SerializeField] HunterStateMachine StateMachine;
     [SerializeField] GameObject HunterObj;
     [SerializeField] Rest RestState;
+    [SerializeField] Hoont HoontState;
     [SerializeField] Transform target;
 
     [Header("variables")]
     [SerializeField] private List<Transform> Waypoints = new List<Transform>();
-    [SerializeField] float Speed, arrivaldistance, rotspeed, obstacledist;
+    [SerializeField] float Speed, arrivaldistance, obstacledist;
     [SerializeField] LayerMask obstacles;
 
     public Transform HunterTransform;
@@ -36,12 +37,12 @@ public class Patrol : State
         HunterTransform = HunterObj.transform;
 
         Speed = HunterObj.GetComponent<HunterCore>().speed;
-        rotspeed = HunterObj.GetComponent<HunterCore>().rotspeed;
     }
 
     public override State RunCurrentState()
     {
         CheckEnergy();
+
 
         if(Physics2D.Raycast(this.transform.position + this.transform.up * 0.6f, transform.right, obstacledist, obstacles))
         {
@@ -53,6 +54,11 @@ public class Patrol : State
         {
             print("dodge");
             ObstacleAvoid(-1);
+        }
+        else if(StateMachine.HoontTime == true)
+        {
+            StateMachine.SwitchtoNewState(HoontState);
+            return HoontState;
         }
         else
         {
@@ -101,7 +107,7 @@ public class Patrol : State
         print("Dodge");
 
         Vector3 Director = ((HunterTransform.up) - HunterTransform.position) * Speed;
-        Director = Director * Detector;
+        Director *= Detector;
 
         HunterTransform.position += Vector3.ClampMagnitude(Director, Speed) * Time.deltaTime;
 

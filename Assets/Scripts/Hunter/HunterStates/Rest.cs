@@ -47,49 +47,5 @@ public class Rest : State
 
     }
 
-
-    GameObject ChosenBoid;
-    private void ChooseNextState() // timer finalizado, comienza a elegir nuevo estado
-    {
-        if(hunterCore.Boids.Count == 0) // no hay boids en la lista del hunter
-        {
-            b = true; a = false;
-            HunterStateMachine.SwitchtoNewState(PatrolState); 
-            pulse = 0;
-           
-         
-        }
-        else // hay boids en la lista
-        {
-            // comparo la distancia entre cada boid de la lista y el hunter
-            foreach(GameObject BOID in hunterCore.Boids) 
-            {
-                distance = Vector3.Distance(BOID.transform.position, hunterCore.transform.position);
-                if(distance < closestboiddistance)
-                {
-                    ChosenBoid = BOID;
-                    closestboiddistance= distance;
-                }
-            }
-            if(ChosenBoid!= null) // compruebo que se eligio un boid correcto
-            {
-                HoontState.SwitchTarget(ChosenBoid);
-                HunterStateMachine.SwitchtoNewState(HoontState);
-                a = true; b = false;
-               
-            }
-            else // en el caso de que no se pudo elegir un boid, iniciar patrol 
-            {
-                HunterStateMachine.SwitchtoNewState(PatrolState);
-                pulse = 0;
-                b = true; a = false;
-         
-            }
-            
-            
-
-        }
-
-       
-    }
+    
 }

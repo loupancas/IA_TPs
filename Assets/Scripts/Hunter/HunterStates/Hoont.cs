@@ -6,9 +6,20 @@ public class Hoont : State
 {
     GameObject target;
 
+    [SerializeField] HunterStateMachine stateMachine;
+    [SerializeField] Patrol PatrolState;
+    [SerializeField] Rest RestState;
+
 
     public override State RunCurrentState()
     {
+        if(stateMachine.HoontTime == false)
+        {
+            stateMachine.SwitchtoNewState(PatrolState);
+            return PatrolState;
+        }
+
+
         return this;
     }
 
