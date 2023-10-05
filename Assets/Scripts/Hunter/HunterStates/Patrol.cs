@@ -43,11 +43,16 @@ public class Patrol : State
     {
         CheckEnergy();
 
-        if(Physics2D.Raycast(this.transform.position + this.transform.up * 0.5f, transform.right, obstacledist, obstacles))
+        if(Physics2D.Raycast(this.transform.position + this.transform.up * 0.6f, transform.right, obstacledist, obstacles))
         {
             print("dodge");
             ObstacleAvoid(1);
 
+        }
+        else if(Physics2D.Raycast(this.transform.position + -this.transform.up * 0.6f, transform.right, obstacledist, obstacles))
+        {
+            print("dodge");
+            ObstacleAvoid(-1);
         }
         else
         {
@@ -100,9 +105,6 @@ public class Patrol : State
 
         HunterTransform.position += Vector3.ClampMagnitude(Director, Speed) * Time.deltaTime;
 
-        float DirectorAngle = MathF.Atan2(Director.y, Director.x) * Mathf.Rad2Deg;
-
-        HunterTransform.rotation = Quaternion.Euler(Vector3.forward * DirectorAngle);
     }
 
     private void ArriveWaypoint()
@@ -139,7 +141,7 @@ public class Patrol : State
     {
         Debug.DrawRay(HunterTransform.position + HunterTransform.up * 0.5f, HunterTransform.right, Color.green);
 
-
+        Debug.DrawRay(this.transform.position + -this.transform.up * 0.6f, transform.right, Color.green);
     }
 
 }
