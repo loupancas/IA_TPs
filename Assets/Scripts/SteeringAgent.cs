@@ -30,6 +30,7 @@ public class SteeringAgent : MonoBehaviour
 
     protected Vector3 Seek(Vector3 targetPos)
     {
+        Debug.Log("seek");
         return Seek(targetPos, _maxSpeed);
     }
 
@@ -56,11 +57,11 @@ public class SteeringAgent : MonoBehaviour
 
     protected Vector3 ObstacleAvoidance()
     {
-
+        
         if (Physics.Raycast(transform.position + transform.up * 0.5f, transform.right, _viewRadius, _obstacles))
             return Seek(transform.position - transform.up);
-        else if (Physics.Raycast(transform.position - transform.up * 0.5f, transform.right, _viewRadius, _obstacles))
-            return Seek(transform.position + transform.up);
+        //else if (Physics.Raycast(transform.position - transform.up * 0.5f, transform.right, _viewRadius, _obstacles))
+            //return Seek(transform.position + transform.up);
         return Vector3.zero;
     }
 
@@ -161,16 +162,6 @@ public class SteeringAgent : MonoBehaviour
 
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Food"))
-        {
-            Debug.Log("detecto comida");
-            //isRover = false;
-            //transform.position = Vector2.MoveTowards(transform.position, collision.transform.position, arriveSpeed * Time.deltaTime);
-            Destroy(gameObject);
-        }
-    }
-
+   
     
 }
