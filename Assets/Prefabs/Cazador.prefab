@@ -154,7 +154,7 @@ MonoBehaviour:
   StateMachine: {fileID: 1764910306}
   HunterObj: {fileID: 7331410090761136880}
   RestState: {fileID: 219044173}
-  HoontState: {fileID: 0}
+  HoontState: {fileID: 219044170}
   target: {fileID: 0}
   Waypoints:
   - {fileID: 0}
@@ -180,6 +180,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed5d779ef479c7044b7dbfd4323a5839, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  stateMachine: {fileID: 1764910306}
+  PatrolState: {fileID: 219044172}
+  RestState: {fileID: 219044173}
+  hunterCore: {fileID: 1764910307}
+  HunterTransform: {fileID: 0}
+  obstacleDist: 4
+  Obstacle:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1 &7331410090761136880
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,6 +203,7 @@ GameObject:
   - component: {fileID: 1764910306}
   - component: {fileID: 1764910307}
   - component: {fileID: 1764910305}
+  - component: {fileID: 1595380167}
   m_Layer: 0
   m_Name: Cazador
   m_TagString: Untagged
@@ -306,7 +317,7 @@ MonoBehaviour:
   speed: 2
   energy: 0
   MaxEnegy: 4
-  VisionRadius: 2
+  VisionRadius: 4
   rotspeed: 60
   HasTarget: 0
 --- !u!58 &1764910305
@@ -325,3 +336,24 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!50 &1595380167
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7331410090761136880}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

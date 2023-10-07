@@ -43,22 +43,24 @@ public class Patrol : State
     {
         CheckEnergy();
 
-
-        if(Physics2D.Raycast(this.transform.position + this.transform.up * 0.6f, transform.right, obstacledist, obstacles))
-        {
-            print("dodge");
-            ObstacleAvoid(1);
-
-        }
-        else if(Physics2D.Raycast(this.transform.position + -this.transform.up * 0.6f, transform.right, obstacledist, obstacles))
-        {
-            print("dodge");
-            ObstacleAvoid(-1);
-        }
-        else if(StateMachine.HoontTime == true)
+        if (StateMachine.HoontTime == true)
         {
             StateMachine.SwitchtoNewState(HoontState);
             return HoontState;
+        }
+
+        if (Physics2D.Raycast(HunterTransform.position + HunterTransform.up * 0.6f, HunterTransform.right, obstacledist, obstacles))
+        {
+            print("dodge this you bastard");
+            ObstacleAvoid(1);
+            return this;
+
+        }
+        else if(Physics2D.Raycast(HunterTransform.position + -HunterTransform.up * 0.6f, HunterTransform.right, obstacledist, obstacles))
+        {
+            print("parry this you filthy casul");
+            ObstacleAvoid(-1);
+            return this;
         }
         else
         {
@@ -106,11 +108,9 @@ public class Patrol : State
     {
         print("Dodge");
 
-        Vector3 Director = ((HunterTransform.up) - HunterTransform.position) * Speed;
-        Director *= Detector;
-
-        HunterTransform.position += Vector3.ClampMagnitude(Director, Speed) * Time.deltaTime;
-
+        Vector3 Director = new Vector3(HunterTransform.position.x,HunterTransform.transform.position.y + Detector,HunterTransform.position.z) * Speed;
+        //HunterTransform.position += Vector3.ClampMagnitude(Director*1.5f, Speed) * Time.deltaTime;
+        HunterTransform.position = Vector3.MoveTowards(HunterTransform.position, Director, Speed * Time.deltaTime);
     }
 
     private void ArriveWaypoint()
@@ -147,7 +147,9 @@ public class Patrol : State
     {
         Debug.DrawRay(HunterTransform.position + HunterTransform.up * 0.5f, HunterTransform.right, Color.green);
 
-        Debug.DrawRay(this.transform.position + -this.transform.up * 0.6f, transform.right, Color.green);
+        Debug.DrawRay(HunterTransform.position, HunterTransform.right, Color.green);
+
+        Debug.DrawRay(HunterTransform.position + -HunterTransform.up * 0.6f, HunterTransform.right, Color.green);
     }
 
 }

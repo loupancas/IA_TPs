@@ -11,6 +11,7 @@ public class HunterStateMachine : MonoBehaviour
     [Header("State Machine")]
     public State CurrentState; // variable del state machine, permite definir que variable usar
 
+
     [SerializeField] Rest RestState; // referencia del estado
     [SerializeField] Patrol PatrolState; // referencia del estado
     [SerializeField] Hoont HoontState; // referencia del estado
