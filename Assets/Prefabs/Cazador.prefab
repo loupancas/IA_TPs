@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2049608}
   - component: {fileID: 2049609}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Triangle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 219044173}
   - component: {fileID: 219044172}
   - component: {fileID: 219044170}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: states
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,16 +180,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed5d779ef479c7044b7dbfd4323a5839, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
   stateMachine: {fileID: 1764910306}
   PatrolState: {fileID: 219044172}
   RestState: {fileID: 219044173}
   hunterCore: {fileID: 1764910307}
-  HunterTransform: {fileID: 0}
-  obstacleDist: 4
+  HunterTransform: {fileID: 7331410090761136894}
+  target: {fileID: 0}
+  obstacleDist: 2
   Obstacle:
     serializedVersion: 2
     m_Bits: 8
+  EatDistance: 0.5
+  V3AvgAccl: {x: 0, y: 0, z: 0}
+  V3AvgVel: {x: 0, y: 0, z: 0}
 --- !u!1 &7331410090761136880
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,7 +207,7 @@ GameObject:
   - component: {fileID: 1764910307}
   - component: {fileID: 1764910305}
   - component: {fileID: 1595380167}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cazador
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -317,7 +320,7 @@ MonoBehaviour:
   speed: 2
   energy: 0
   MaxEnegy: 4
-  VisionRadius: 4
+  VisionRadius: 8
   rotspeed: 60
   HasTarget: 0
 --- !u!58 &1764910305
