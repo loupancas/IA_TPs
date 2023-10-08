@@ -1118,7 +1118,7 @@ MonoBehaviour:
   isEvadeObstacles: 0
   _alignmentWeight: 0.5
   _separationWeight: 0.5
-  _cohesionWeight: 0.5
+  _cohesionWeight: 0.6
   _hunter: {fileID: 322823772151713183}
   _camera: {fileID: 323408458}
   _offsetX: 0
@@ -1540,7 +1540,7 @@ MonoBehaviour:
   isEvadeObstacles: 0
   _alignmentWeight: 0.5
   _separationWeight: 0.5
-  _cohesionWeight: 0.5
+  _cohesionWeight: 0.6
   _hunter: {fileID: 322823772151713183}
   _camera: {fileID: 323408458}
   _offsetX: 0
@@ -1945,7 +1945,7 @@ MonoBehaviour:
   isEvadeObstacles: 0
   _alignmentWeight: 0.5
   _separationWeight: 0.5
-  _cohesionWeight: 0.5
+  _cohesionWeight: 0.6
   _hunter: {fileID: 322823772151713183}
   _camera: {fileID: 323408458}
   _offsetX: 0
@@ -2251,7 +2251,7 @@ MonoBehaviour:
   isEvadeObstacles: 0
   _alignmentWeight: 0.5
   _separationWeight: 0.5
-  _cohesionWeight: 0.5
+  _cohesionWeight: 0.6
   _hunter: {fileID: 322823772151713183}
   _camera: {fileID: 323408458}
   _offsetX: 0
@@ -2653,7 +2653,7 @@ MonoBehaviour:
   isEvadeObstacles: 0
   _alignmentWeight: 0.5
   _separationWeight: 0.5
-  _cohesionWeight: 0.5
+  _cohesionWeight: 0.6
   _hunter: {fileID: 322823772151713183}
   _camera: {fileID: 323408458}
   _offsetX: 0
