@@ -1,19 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SteeringAgent : MonoBehaviour
 {
-    
     [SerializeField] protected float _maxSpeed, _maxForce;
     [SerializeField] protected float _viewRadius;
     [SerializeField] protected LayerMask _obstacles;
-
-    private Renderer renderer; // para indicar cada behavior
-
-    
+    [SerializeField] protected Text behaviorText;
 
     protected Vector3 _velocity;
+
+    public bool isEvadeObstacles;
 
     protected void Move()
     {
@@ -30,22 +29,21 @@ public class SteeringAgent : MonoBehaviour
 
     protected Vector3 Seek(Vector3 targetPos)
     {
-        Debug.Log("seek");
         return Seek(targetPos, _maxSpeed);
     }
 
     protected Vector3 Seek(Vector3 targetPos, float speed)
     {
         Vector3 desired = (targetPos - transform.position).normalized * speed;
-
         Vector3 steering = desired - _velocity;
-
         steering = Vector3.ClampMagnitude(steering, _maxForce * Time.deltaTime);
-
         return steering;
     }
 
-    protected Vector3 Flee(Vector3 targetPos) => -Seek(targetPos);
+    protected Vector3 Flee(Vector3 targetPos)
+    {
+        return -Seek(targetPos);
+    }
 
     protected Vector3 Arrive(Vector3 targetPos)
     {
@@ -54,27 +52,33 @@ public class SteeringAgent : MonoBehaviour
 
         return Seek(targetPos, _maxSpeed * (dist / _viewRadius));
     }
-
     protected Vector3 ObstacleAvoidance()
     {
-        
-        if (Physics.Raycast(transform.position + transform.up * 0.5f, transform.right, _viewRadius, _obstacles))
+        if (Physics2D.Raycast(transform.position + transform.up * 0.5f, transform.right, _viewRadius, _obstacles))
+        {
+            isEvadeObstacles = true;
             return Seek(transform.position - transform.up);
-        //else if (Physics.Raycast(transform.position - transform.up * 0.5f, transform.right, _viewRadius, _obstacles))
-            //return Seek(transform.position + transform.up);
+        }
+        else if (Physics2D.Raycast(transform.position - transform.up * 0.5f, transform.right, _viewRadius, _obstacles))
+        {
+            isEvadeObstacles = true;
+            return Seek(transform.position + transform.up);
+        }
+
+        isEvadeObstacles = false;
         return Vector3.zero;
     }
 
-    protected Vector3 Pursuit(SteeringAgent targetAgent)
+    protected Vector3 Pursuit(Vector3 targetPos)
     {
-        Vector3 futurePos = targetAgent.transform.position + targetAgent._velocity;
+        Vector3 futurePos = targetPos + _velocity;
         Debug.DrawLine(transform.position, futurePos, Color.cyan);
         return Seek(futurePos);
     }
 
-    protected Vector3 Evade(SteeringAgent targetAgent)
+    protected Vector3 Evade(Vector3 targetPos)
     {
-        return -Pursuit(targetAgent);
+        return -Pursuit(targetPos);
     }
 
     public void ResetPosition() //cuando eliminan un conejo
@@ -90,17 +94,11 @@ public class SteeringAgent : MonoBehaviour
         foreach (var item in agents)
         {
             if (Vector3.Distance(item.transform.position, transform.position) > _viewRadius) continue;
-
-            //Promedio = Suma / Cantidad
-            //Matematica  = 7, 9, 8
-            //Promedio = 24/3 = 8;
-
             desired += item._velocity;
             boidsCount++;
         }
 
         desired /= boidsCount;
-
         return CalculateSteering(desired.normalized * _maxSpeed);
     }
 
@@ -111,10 +109,12 @@ public class SteeringAgent : MonoBehaviour
         foreach (var item in agents)
         {
             if (item == this) continue; //Ignorar mi propio calculo
-
             Vector3 dist = item.transform.position - transform.position;
 
-            if (dist.sqrMagnitude > _viewRadius * _viewRadius) continue;
+            if (dist.sqrMagnitude > _viewRadius * _viewRadius) 
+            {
+                continue;
+            }
 
             desired += dist;
         }
@@ -157,11 +157,5 @@ public class SteeringAgent : MonoBehaviour
     protected void AddForce(Vector3 force)
     {
         _velocity = Vector3.ClampMagnitude(_velocity + force, _maxSpeed);
-    }
-
-
-
-
-   
-    
+    } 
 }

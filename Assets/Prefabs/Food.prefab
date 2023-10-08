@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8499604659143842162}
   - component: {fileID: 4966752501422259427}
   m_Layer: 6
-  m_Name: Comida
+  m_Name: Food
   m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,6 +98,6 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.21133333}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 0.6

@@ -9,57 +9,59 @@ public class Spawn : MonoBehaviour
     [SerializeField] int _offsetY;
     [SerializeField] GameObject _foodPrefab;
     [SerializeField] GameObject _obstaclePrefab;
+    [SerializeField] Transform _parentContainer;
+    [SerializeField] float checkRadius = 0.5f; // Radio de verificación para comprobar superposiciones
     public int maxFood = 5;
     public int minFood = 3;
 
     public int maxObstacle = 5;
     public int minObstacle = 3;
 
-
-    int _randomX;
-    int _randomY;
-
-    void Start()
+    void Awake()
     {
+        List<GameObject> allSpawnedObjects = new List<GameObject>();
+
         int instantiateCountFood = Random.Range(minFood, maxFood);
         int instantiateCountObstacles = Random.Range(minObstacle, maxObstacle);
 
-
         for (int i = 0; i < instantiateCountFood; i++)
         {
-            Spawner(_foodPrefab);
+            GameObject food = Spawner(_foodPrefab);
+            if (food != null)
+                allSpawnedObjects.Add(food);
         }
 
         for (int i = 0; i < instantiateCountObstacles; i++)
         {
-            Spawner(_obstaclePrefab);
+            GameObject obstacle = Spawner(_obstaclePrefab);
+            if (obstacle != null)
+                allSpawnedObjects.Add(obstacle);
         }
-
-        
     }
 
-    void Update()
+    GameObject Spawner(GameObject prefab)
     {
-        /*if (Input.GetKeyDown(KeyCode.Space))
+        Vector2 spawnPosition = RandomCoordinates();
+        while (PositionIsOccupied(spawnPosition, prefab))
         {
-            Spawner();
-        }*/
-    }
-
-    void Spawner(GameObject prefab)
-    {
-        Vector2 position = RandomCoordinates();
-        GameObject go = Instantiate(prefab, position, Quaternion.identity);
+            spawnPosition = RandomCoordinates();
+        }
+        return Instantiate(prefab, spawnPosition, Quaternion.identity, _parentContainer);
     }
 
     Vector2 RandomCoordinates()
     {
-        _randomX = Random.Range(0 + _offsetX, Screen.width - _offsetX);
-        _randomY = Random.Range(0 + _offsetY, Screen.height - _offsetY);
+        int randomX = Random.Range(0 + _offsetX, Screen.width - _offsetX);
+        int randomY = Random.Range(0 + _offsetY, Screen.height - _offsetY);
 
-        Vector2 coordinates = new Vector2(_randomX, _randomY);
+        Vector2 coordinates = new Vector2(randomX, randomY);
+        return _camera.ScreenToWorldPoint(coordinates);
+    }
 
-        Vector2 screenToWorldPosition = _camera.ScreenToWorldPoint(coordinates);
-        return screenToWorldPosition;
+    bool PositionIsOccupied(Vector2 position, GameObject prefabToSpawn)
+    {
+        float radius = prefabToSpawn.GetComponent<Collider2D>().bounds.size.magnitude / 2;
+        Collider2D collider = Physics2D.OverlapCircle(position, radius + checkRadius);
+        return collider != null;
     }
 }

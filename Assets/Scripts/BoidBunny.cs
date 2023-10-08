@@ -3,39 +3,45 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BoidBunny : SteeringAgent
-{
-    
+{    
     [SerializeField, Range(0f, 2.5f)] float _alignmentWeight = 1;
     [SerializeField, Range(0f, 2.5f)] float _separationWeight = 1;
     [SerializeField, Range(0f, 2.5f)] float _cohesionWeight = 1;
-    [SerializeField] Transform _target;
-    [SerializeField] SteeringAgent _cazador;
-    bool isRover; //deambulando
+    [SerializeField] Transform _hunter;
     [SerializeField] Camera _camera;
     [SerializeField] int _offsetX;
     [SerializeField] int _offsetY;
+    [SerializeField] private float distanceTarget = 2.5f;
     int _randomX;
     int _randomY;
     public Vector2 currentTargetPoint;
-
     public LayerMask foodLayer;
-    public float detectionRadius = 1f;
-    public float arriveFoodSpeed =2f;
+    public float detectionFoodRadius = 1f;
+    public float arriveFoodSpeed = 2f;
+    [SerializeField] private Transform _target;
+    private GameObject targetObject;
+    public float hunterRadius;
+
+    // Bools
+    public bool isFlee;
     public bool detectFood;
-    public bool isflocking=true;
-    //private Renderer renderer;
+    public bool isEating;
+    public bool isFlocking;
+
+    Vector3 dir;
+
     void Start()
     {
+        targetObject = new GameObject("TargetObject");
+        _target = targetObject.transform;
+
         ChangePositions();
-        //isRover = true;
-        //RefreshTargetPoint();
+
         float x = Random.Range(-1f, 1f);
         float y = Random.Range(-1f, 1f);
 
-        var dir = new Vector3(x, y);
-
+        dir = new Vector3(x, y);
         _velocity = dir.normalized * _maxSpeed;
-
         GameManager.instance.allAgents.Add(this);
     }
 
@@ -51,41 +57,87 @@ public class BoidBunny : SteeringAgent
         _randomY = Random.Range(0 + _offsetY, Screen.height - _offsetY);
 
         Vector2 coordinates = new Vector2(_randomX, _randomY);
-
         Vector2 screenToWorldPosition = _camera.ScreenToWorldPoint(coordinates);
         return screenToWorldPosition;
     }
 
     void Update()
     {
-       
-         
+        Move();
 
-        if(isflocking) Flocking();
+        if (!isEating && !detectFood && _target.name != "Food(Clone)")
+        {
+            _target.position = transform.position + dir * distanceTarget;
+        }
 
-        // AddForce(Evade(_cazador));
+        if (Vector3.Distance(transform.position, _hunter.position) <= hunterRadius && _hunter.gameObject.activeInHierarchy)
+        {
+            isFlee = true;
+            AddForce(Evade(_hunter.position));
+        }
+        else
+        {
+            isFlee = false;
 
-        if (!HastToUseObstacleAvoidance()) AddForce(Arrive(_target.position));
-       
+            if (!HastToUseObstacleAvoidance())
+            {
+                AddForce(Arrive(_target.position));
+            }
 
-        if(!detectFood) Move();
+            DetectFood();
 
-        DetectFood();
-        /* if (isRover)
-         {
-             // transform.position = Vector2.MoveTowards(transform.position, currentTargetPoint, speed * Time.deltaTime); //deambular
+            if (!detectFood || !isEating)
+            {
+                foreach (var rb in GameManager.instance.allAgents)
+                {
+                    if (rb.transform == transform)
+                    {
+                        continue;
+                    }
+                    if (Vector3.Distance(transform.position, rb.transform.position) <= _viewRadius)
+                    {
+                        isFlocking = true;
+                        Flocking();
+                    }
+                    else
+                    {
+                        isFlocking = false;
+                    }
+                }
+            }
+        }
 
-             Vector2 direction = (currentTargetPoint - (Vector2)transform.position).normalized;
-             transform.position += (Vector3)(direction * _maxSpeed * Time.deltaTime);
-             if (Vector2.Distance(transform.position, currentTargetPoint) < 0.01f)
-             {
-                 RefreshTargetPoint();
+        /// Behaviours Texts
 
-             }
+        if (isFlee)
+        {
+            behaviorText.text = "Fleeing";
+        }
 
-             GetComponent<Renderer>().material.color = Color.green;
-         }*/
+        if (isEvadeObstacles)
+        {
+            behaviorText.text = "Evading";
+        }
 
+        if (detectFood)
+        {
+            behaviorText.text = "Smelling";
+        }
+
+        if (isEating)
+        {
+            behaviorText.text = "Eating";
+        }
+
+        if (isFlocking)
+        {
+            behaviorText.text = "Flocking";
+        }
+
+        if (!isFlee && !detectFood && !isEating && !isFlocking && !isEvadeObstacles)
+        {
+            behaviorText.text = "Moving";
+        }
     }
 
     private void Flocking()
@@ -94,35 +146,36 @@ public class BoidBunny : SteeringAgent
         AddForce(Alignment(boids) * _alignmentWeight);
         AddForce(Separation(boids) * _separationWeight); //Se aplique un radio mas chico al actual
         AddForce(Cohesion(boids) * _cohesionWeight);
-        Debug.Log("Flocking");
-        //renderer.material.color = Color.blue;
     }
 
     private void DetectFood()
     {
-        
-        Collider2D foodCollider=Physics2D.OverlapCircle(transform.position,detectionRadius,foodLayer);
+        Collider2D foodCollider = Physics2D.OverlapCircle(transform.position,detectionFoodRadius,foodLayer);
         if(foodCollider!=null && foodCollider.CompareTag("Food"))
         {
             detectFood = true;
-            transform.position = Vector2.MoveTowards(transform.position, foodCollider.transform.position,arriveFoodSpeed*Time.deltaTime);
+            _target = foodCollider.transform;
 
-            if(Vector2.Distance(transform.position,foodCollider.transform.position)<0.01f)
+            if (Vector2.Distance(transform.position, foodCollider.transform.position) < 0.05f)
             {
-                Eat(foodCollider);
+                detectFood = false;
+                isEating = true;
+
+                StartCoroutine(Eat(foodCollider));
             }
-
         }
-
+        else
+        {
+            detectFood = false;
+        }
     }
-
-    private void Eat(Collider2D other)
+ 
+    private IEnumerator Eat(Collider2D other)
     {
+        yield return new WaitForSeconds(2f);
 
-        Destroy(other.gameObject, 1);
-        detectFood = false;
+        other.gameObject.SetActive(false);
+        _target = targetObject.transform;
+        isEating = false;
     }
-    
-
-
 }
