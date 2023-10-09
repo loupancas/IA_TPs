@@ -77,7 +77,8 @@ public class Hoont : State
         // el cazador alcanzo al conejo, matarlo a sangre fria en frente de su familia :D
         if(Vector3.Distance(target.transform.position, HunterTransform.position) < EatDistance)
         {
-            Destroy(target.gameObject);
+            //Destroy(target.gameObject);
+            target.gameObject.SetActive(false);
             hunterCore.energy--; // restar energia
         }
 
