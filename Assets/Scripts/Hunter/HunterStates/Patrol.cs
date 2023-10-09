@@ -42,6 +42,7 @@ public class Patrol : State
     public override State RunCurrentState()
     {
         CheckEnergy();
+        HunterObj.GetComponent<Renderer>().material.color = Color.yellow;
 
         if (StateMachine.HoontTime == true)
         {
@@ -49,14 +50,14 @@ public class Patrol : State
             return HoontState;
         }
 
-        if (Physics2D.Raycast(HunterTransform.position + HunterTransform.up * 0.6f, HunterTransform.right, obstacledist, obstacles))
+        if (Physics2D.Raycast(HunterTransform.position + HunterTransform.up * 0.5f, HunterTransform.right, obstacledist, obstacles))
         {
             print("dodge this you bastard");
             ObstacleAvoid(1);
             return this;
 
         }
-        else if(Physics2D.Raycast(HunterTransform.position + -HunterTransform.up * 0.6f, HunterTransform.right, obstacledist, obstacles))
+        else if(Physics2D.Raycast(HunterTransform.position + -HunterTransform.up * 0.5f, HunterTransform.right, obstacledist, obstacles))
         {
             print("parry this you filthy casul");
             ObstacleAvoid(-1);
@@ -67,7 +68,7 @@ public class Patrol : State
             MovementLogic();
         }
 
-
+       
         return this;
 
     }
@@ -146,10 +147,7 @@ public class Patrol : State
     private void OnDrawGizmos()
     {
         Debug.DrawRay(HunterTransform.position + HunterTransform.up * 0.5f, HunterTransform.right, Color.green);
-
-        Debug.DrawRay(HunterTransform.position, HunterTransform.right, Color.green);
-
-        Debug.DrawRay(HunterTransform.position + -HunterTransform.up * 0.6f, HunterTransform.right, Color.green);
+        Debug.DrawRay(HunterTransform.position + -HunterTransform.up * 0.5f, HunterTransform.right, Color.green);
     }
 
 }

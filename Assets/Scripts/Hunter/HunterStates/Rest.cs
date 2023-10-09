@@ -28,6 +28,7 @@ public class Rest : State
 
     public override State RunCurrentState()
     {
+        hunterCore.GetComponent<Renderer>().material.color = Color.green;
         if(pulse >= Timer)
         {
             hunterCore.energy = hunterCore.MaxEnegy;

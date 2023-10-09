@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 32787493}
   - component: {fileID: 32787492}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -598,7 +598,7 @@ GameObject:
   - component: {fileID: 323408459}
   - component: {fileID: 323408458}
   - component: {fileID: 323408457}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -2055,7 +2055,7 @@ GameObject:
   - component: {fileID: 1616853089}
   - component: {fileID: 1616853088}
   - component: {fileID: 1616853087}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: EventSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2762,7 +2762,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2127124265}
   - component: {fileID: 2127124264}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SpawnManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2998,16 +2998,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed5d779ef479c7044b7dbfd4323a5839, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
   stateMachine: {fileID: 0}
   PatrolState: {fileID: 0}
   RestState: {fileID: 0}
   hunterCore: {fileID: 0}
   HunterTransform: {fileID: 0}
+  target: {fileID: 0}
   obstacleDist: 0
   Obstacle:
     serializedVersion: 2
     m_Bits: 0
+  EatDistance: 0
+  V3AvgAccl: {x: 0, y: 0, z: 0}
+  V3AvgVel: {x: 0, y: 0, z: 0}
 --- !u!114 &7044896596196195884
 MonoBehaviour:
   m_ObjectHideFlags: 0
