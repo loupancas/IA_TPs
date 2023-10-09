@@ -6,7 +6,7 @@ using UnityEngine;
 public class HunterCore : MonoBehaviour
 {
     [Header("References")]
-    public List<GameObject> Boids= new List<GameObject>();
+    public List<GameObject> Boids= new List<GameObject>(); // lista de conejos
     CircleCollider2D Collider2D;
 
     [Header("State Machine")]
@@ -37,29 +37,28 @@ public class HunterCore : MonoBehaviour
     void Update()
     {
        
-        if(energy > 1)
+        if(energy > 1) // check energia
         {
-            StateMachine.IsCharged= true;
-            StateMachine.RunStateMachine();
+            StateMachine.IsCharged= true; // hay energia?. enviar info
+            StateMachine.RunStateMachine(); // a la maquina de estados y correrla
         }
         else
         {
-            StateMachine.IsCharged = false;
-
-            StateMachine.RunStateMachine();
+            StateMachine.IsCharged = false; // hay energia?. enviar info
+            StateMachine.RunStateMachine();// a la maquina de estados y correrla
         }
 
-        CheckforTargets();
+        CheckforTargets(); // revisar si hay objetivos viables
 
 
     }
 
     private void CheckforTargets()
     {
-       if(Boids.Count> 0)
+       if(Boids.Count> 0) // hay boids???
        {
-            HasTarget= true;
-            StateMachine.HoontTime = true;
+            HasTarget= true; // info a la maquina de estados
+            StateMachine.HoontTime = true; 
        }
         else
         {
@@ -68,12 +67,12 @@ public class HunterCore : MonoBehaviour
         }
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision) // check de colisiones
     {
 
-        print("See somfin");
         if (collision.CompareTag("Flocker") || collision.tag == "Flocker")
         {
+            // entro un conejo al radio
            Boids.Add(collision.gameObject);
         }
       
@@ -82,10 +81,11 @@ public class HunterCore : MonoBehaviour
 
 
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision) // check de colisiones
     {
         if (collision.CompareTag("Flocker"))
         {
+            // salio un conejo del radio
             Boids.Remove(collision.gameObject);
         }
         else

@@ -31,8 +31,9 @@ public class Hoont : State
 
     private void LateUpdate()
     {
-        if(target!= null)
+        if(target!= null) // catch target
         {
+            //comenzar coroutina de check de valores
             StartCoroutine(Check()) ;
         }
     }
@@ -40,7 +41,7 @@ public class Hoont : State
     public override State RunCurrentState()
     {
 
-        if(stateMachine.HoontTime == false)
+        if(stateMachine.HoontTime == false) // finalizo la cazeria, volver a patrullar
         {
             stateMachine.SwitchtoNewState(PatrolState);
             return PatrolState;
@@ -48,24 +49,16 @@ public class Hoont : State
    
         if(target == null || hunterCore.Boids.Contains(target) == false)
         {
+            // catch de la existencia del conejo
             bnnuydistance= float.MaxValue;
-            ChooseTarget();
+            ChooseTarget(); // si esto corre, elegir nuevo conejo
         }
 
+        // obstacle avoidance
         if (Physics2D.Raycast(HunterTransform.position + HunterTransform.up * 0.6f, HunterTransform.right, obstacleDist, Obstacle))
         {
-   
             ObstacleAvoid(-1);
             return this;
-     
-
-        }
-        else if (Physics2D.Raycast(HunterTransform.position, HunterTransform.right, obstacleDist, Obstacle))
-        {
-       
-            ObstacleAvoid(1);
-            return this;
-        
         }
         else if (Physics2D.Raycast(HunterTransform.position + -HunterTransform.up * 0.6f, HunterTransform.right, obstacleDist, Obstacle))
         {
@@ -74,33 +67,31 @@ public class Hoont : State
             return this;
         
         }
+        // movimiento normal de cazador :)
         else
         {
             MovementLogic();
 
         }
 
+        // el cazador alcanzo al conejo, matarlo a sangre fria en frente de su familia :D
         if(Vector3.Distance(target.transform.position, HunterTransform.position) < EatDistance)
         {
-            //target.GetComponent<BoidBunny>().Die();
             Destroy(target.gameObject);
-            hunterCore.energy--;
+            hunterCore.energy--; // restar energia
         }
 
-        hunterCore.GetComponent<Renderer>().material.color = Color.red;
+        hunterCore.GetComponent<Renderer>().material.color = Color.red; // color
         return this;
     }
-
 
     Vector3 Director;
     private void MovementLogic()
     {
-        //ChooseTarget();
-
         //calcular distancia entre waypoint y hunter
         distance = Vector2.Distance(target.transform.position, hunterCore.transform.position);
 
-        if(distance < 1)
+        if(distance < 1) // ver que tipo de movimiento conviene :)
         {
             // calcular vector director SIN PROJECCION DE MOVIMIENTO
             Director = (target.transform.position - hunterCore.transform.position) * hunterCore.speed;
@@ -136,7 +127,7 @@ public class Hoont : State
         V3AvgVel = V3Velocity;
         V3AvgAccl = V3Accel;
 
-        ProjectedMovement(1);
+        ProjectedMovement(1); // evento de proyeccion de movimiento 
 
         V3PreviousVel = V3Velocity;
         V3PreviousAccel = V3Accel;
@@ -157,8 +148,7 @@ public class Hoont : State
 
     private void OnDrawGizmos()
     {
-        if(target == null) return;  
-
+        if(target == null) return;  // catch :)
         Debug.DrawLine(HunterTransform.position,ProjectedMovement(1),Color.yellow);
     }
 

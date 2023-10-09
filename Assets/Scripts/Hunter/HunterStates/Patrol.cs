@@ -41,28 +41,34 @@ public class Patrol : State
 
     public override State RunCurrentState()
     {
+        /// check energia
         CheckEnergy();
+
+        //cambiar color :3
         HunterObj.GetComponent<Renderer>().material.color = Color.yellow;
 
+        //check si es momento de cazar, si lo es, es porque ingreso un conejo al radio de vision
         if (StateMachine.HoontTime == true)
         {
             StateMachine.SwitchtoNewState(HoontState);
             return HoontState;
         }
 
+        // deteccion de obstaculos
         if (Physics2D.Raycast(HunterTransform.position + HunterTransform.up * 0.5f, HunterTransform.right, obstacledist, obstacles))
         {
-            print("dodge this you bastard");
+            //print("dodge this you bastard");
             ObstacleAvoid(1);
             return this;
 
         }
         else if(Physics2D.Raycast(HunterTransform.position + -HunterTransform.up * 0.5f, HunterTransform.right, obstacledist, obstacles))
         {
-            print("parry this you filthy casul");
+            //print("parry this you filthy casul");
             ObstacleAvoid(-1);
             return this;
         }
+        //correr movimiento normal
         else
         {
             MovementLogic();
@@ -107,10 +113,11 @@ public class Patrol : State
 
     private void ObstacleAvoid(float Detector)
     {
-        print("Dodge");
+        //print("Dodge");
 
+        // director ahora busca moverme a la derecha / izquierda, sin variar rotacion :)
         Vector3 Director = new Vector3(HunterTransform.position.x,HunterTransform.transform.position.y + Detector,HunterTransform.position.z) * Speed;
-        //HunterTransform.position += Vector3.ClampMagnitude(Director*1.5f, Speed) * Time.deltaTime;
+       
         HunterTransform.position = Vector3.MoveTowards(HunterTransform.position, Director, Speed * Time.deltaTime);
     }
 
@@ -146,8 +153,10 @@ public class Patrol : State
 
     private void OnDrawGizmos()
     {
+        // dibujar detectores de obstaculos
         Debug.DrawRay(HunterTransform.position + HunterTransform.up * 0.5f, HunterTransform.right, Color.green);
         Debug.DrawRay(HunterTransform.position + -HunterTransform.up * 0.5f, HunterTransform.right, Color.green);
     }
 
+    
 }
