@@ -10,6 +10,9 @@ public class Node_Script : MonoBehaviour
 
     [SerializeField] LayerMask _NodeLayer;
     [SerializeField] private float _RayLenght;
+    [SerializeField] private Renderer _Renderer;
+
+    [SerializeField] bool StartingNode, EndingNode;
 
 
     public Transform NodeTransform;
@@ -20,8 +23,20 @@ public class Node_Script : MonoBehaviour
         _PathManager = FindObjectOfType<TP2_Manager>();
         _PathManager._NodeList.Add(this);
         NodeTransform = GetComponent<Transform>();
-        FindNeighbors();
+
+        _Renderer= GetComponent<Renderer>();
+
+        if(StartingNode == true)
+        {
+            SetNodeType("Start");
+        }
+        else if(EndingNode== true)
+        {
+            SetNodeType("End");
+        }
+        //FindNeighbors();
     }
+
 
     private void FindNeighbors()
     {
@@ -43,6 +58,33 @@ public class Node_Script : MonoBehaviour
 
         }
     }
+
+    public void SetNodeType(string NodeType)
+    {
+        if(NodeType == "Starting" || NodeType == "starting" || NodeType == "start" || NodeType =="Start")
+        {
+            StartingNode = true;
+            _PathManager.StartNode = this;
+            _Renderer.material.color = Color.blue;
+        }
+        else if(NodeType == "Ending" || NodeType == "ending" || NodeType == "end" || NodeType == "End")
+        {
+            EndingNode = true;
+            _PathManager.EndNode = this;
+            _Renderer.material.color = Color.red;
+        }
+        else if(NodeType == "Reset"|| NodeType == "reset")
+        {
+            StartingNode = false;
+            EndingNode = false;
+            _Renderer.material.color = Color.green;
+        }
+        else
+        {
+            Debug.Log("SetNodeType: invalid String, check the call");
+        }
+    }
+
 
 }
 
