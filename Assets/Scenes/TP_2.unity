@@ -4527,6 +4527,7 @@ GameObject:
   - component: {fileID: 2022054378}
   - component: {fileID: 2022054377}
   - component: {fileID: 2022054376}
+  - component: {fileID: 2022054380}
   m_Layer: 0
   m_Name: Enemy 1
   m_TagString: Untagged
@@ -4612,6 +4613,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2022054380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2022054375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c31eb0b3e910b6345b3d3bf5ce3b2096, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pathNodes: []
+  patrolNodes:
+  - {fileID: 952214375}
+  - {fileID: 6512595481661850241}
+  - {fileID: 1730593295}
+  - {fileID: 1487825160}
+  - {fileID: 1706216633}
+  obstacles:
+    serializedVersion: 2
+    m_Bits: 8
+  _speed: 2
 --- !u!1001 &2050867268
 PrefabInstance:
   m_ObjectHideFlags: 0
