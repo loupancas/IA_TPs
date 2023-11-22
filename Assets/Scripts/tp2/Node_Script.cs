@@ -9,14 +9,16 @@ public class Node_Script : MonoBehaviour
     public List<Transform> _Neighbors= new List<Transform>();
 
     [SerializeField] LayerMask _Obstacles;
-    [SerializeField] private float _RayLenght, _ClampMagLenght;
+    [SerializeField] private float _RayLenght;
     [SerializeField] private Renderer _Renderer;
+
 
     [SerializeField] bool StartingNode, EndingNode;
 
 
     public Transform NodeTransform;
     public Collider2D Collider;
+    public float _Weight;
 
     private void Awake()
     {
@@ -44,17 +46,25 @@ public class Node_Script : MonoBehaviour
     {
         foreach (Node_Script _CurrentNode in _PathManager._NodeList) 
         {
-
             if(_CurrentNode.NodeTransform == null || _CurrentNode.NodeTransform.position == this.NodeTransform.position)
             {
+                // el nodo analizado no existe o es el mismo que el ejecutor
                 continue;
             }
+            if(Vector3.Distance(_CurrentNode.NodeTransform.position,this.NodeTransform.position) > _RayLenght)
+            {
+                // esta muy lejos del nodo actual
+                continue;
+            }
+
             if(!InLOS(_CurrentNode.NodeTransform))
             {
+                // hay un bloque en el medio
                 continue;
             }
             else
             {
+                // vecino
                 _Neighbors.Add(_CurrentNode.NodeTransform);
             }
         }
@@ -63,13 +73,10 @@ public class Node_Script : MonoBehaviour
     {
         Vector3 dir = (_currennode.transform.position - this.NodeTransform.position);
 
-        float _DirMag= dir.magnitude;
 
-        float _dirmagclamp = Mathf.Clamp(_DirMag, 0.0f, _ClampMagLenght);
+        //calculo fisica si hay algo en el medio
+        return !Physics2D.Raycast(this.NodeTransform.position, dir, dir.magnitude, _Obstacles );
 
-        return !Physics2D.Raycast(this.NodeTransform.position, dir, dir.magnitude, _Obstacles);
-
-        // posible checkeo necesario por si obtengo un valor nulo  
     }
     public void SetNodeType(string NodeType)
     {

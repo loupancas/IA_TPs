@@ -38,12 +38,17 @@ public class TP2_Manager : MonoBehaviour
             float MinDistance = float.MaxValue;
             foreach (Transform _neighbor in CurrentNode._Neighbors)
             {
+                if(CurrentNode._Neighbors == null)
+                {
+                    Debug.Log("se trato de hacer un pathfinding con un nodo que no posee neighbors, el nodo es: " + CurrentNode.name);
+                    break;
+                }
                 if(CameFromNode.transform == _neighbor.transform)
                 {
                     continue;
                 }
 
-                float currentDistance = Vector2.Distance(EndNode.transform.position, _neighbor.transform.position);
+                float currentDistance = Vector2.Distance(EndNode.transform.position, _neighbor.transform.position) * _neighbor.GetComponent<Node_Script>()._Weight;
                 if (currentDistance < MinDistance)
                 {
                     print("wawa");

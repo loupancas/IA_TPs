@@ -257,16 +257,20 @@ PrefabInstance:
       value: Node
       objectReference: {fileID: 0}
     - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
+      propertyPath: _Weight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
       propertyPath: EndingNode
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
       propertyPath: _RayLenght
-      value: 50
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
       propertyPath: _ClampMagLenght
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
       propertyPath: _NodeLayer.m_Bits
@@ -420,12 +424,20 @@ PrefabInstance:
       value: Node
       objectReference: {fileID: 0}
     - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
+      propertyPath: _Weight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
+      propertyPath: EndingNode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
       propertyPath: _RayLenght
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
       propertyPath: _ClampMagLenght
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
       propertyPath: _NodeLayer.m_Bits
@@ -1401,8 +1413,12 @@ PrefabInstance:
       value: Node
       objectReference: {fileID: 0}
     - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
+      propertyPath: _Weight
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
       propertyPath: _RayLenght
-      value: 50
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
       propertyPath: StartingNode
@@ -1410,7 +1426,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
       propertyPath: _ClampMagLenght
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
       propertyPath: _NodeLayer.m_Bits
@@ -2376,12 +2392,20 @@ PrefabInstance:
       value: Node
       objectReference: {fileID: 0}
     - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
+      propertyPath: _Weight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
       propertyPath: _RayLenght
-      value: 50
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
+      propertyPath: StartingNode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
       propertyPath: _ClampMagLenght
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
       propertyPath: _NodeLayer.m_Bits
@@ -2695,8 +2719,16 @@ PrefabInstance:
       value: Node
       objectReference: {fileID: 0}
     - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
+      propertyPath: _Weight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
+      propertyPath: _RayLenght
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
       propertyPath: _ClampMagLenght
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
       propertyPath: _NodeLayer.m_Bits
@@ -2903,8 +2935,16 @@ PrefabInstance:
       value: Node
       objectReference: {fileID: 0}
     - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
+      propertyPath: _Weight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
+      propertyPath: _RayLenght
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
       propertyPath: _ClampMagLenght
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
       propertyPath: _NodeLayer.m_Bits
@@ -3012,12 +3052,20 @@ PrefabInstance:
       value: Node
       objectReference: {fileID: 0}
     - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
+      propertyPath: _Weight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
       propertyPath: EndingNode
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
+      propertyPath: _RayLenght
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
       propertyPath: _ClampMagLenght
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
       propertyPath: _NodeLayer.m_Bits
@@ -3550,12 +3598,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
+      propertyPath: _Weight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
       propertyPath: EndingNode
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
+      propertyPath: _RayLenght
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
       propertyPath: _ClampMagLenght
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
       propertyPath: _NodeLayer.m_Bits
@@ -4277,12 +4333,20 @@ PrefabInstance:
       value: Node
       objectReference: {fileID: 0}
     - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
-      propertyPath: EndingNode
+      propertyPath: _Weight
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
+      propertyPath: EndingNode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
+      propertyPath: _RayLenght
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
       propertyPath: _ClampMagLenght
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
       propertyPath: _NodeLayer.m_Bits
@@ -4512,8 +4576,20 @@ PrefabInstance:
       value: Node
       objectReference: {fileID: 0}
     - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
+      propertyPath: _Weight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
+      propertyPath: _RayLenght
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
+      propertyPath: StartingNode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
       propertyPath: _ClampMagLenght
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
       propertyPath: _NodeLayer.m_Bits
@@ -4633,8 +4709,16 @@ PrefabInstance:
       value: Node
       objectReference: {fileID: 0}
     - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
+      propertyPath: _Weight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
+      propertyPath: _RayLenght
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
       propertyPath: _ClampMagLenght
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
       propertyPath: _NodeLayer.m_Bits
@@ -4742,8 +4826,16 @@ PrefabInstance:
       value: Node
       objectReference: {fileID: 0}
     - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
+      propertyPath: _Weight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
+      propertyPath: _RayLenght
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
       propertyPath: _ClampMagLenght
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
       propertyPath: _NodeLayer.m_Bits
@@ -5082,8 +5174,16 @@ PrefabInstance:
       value: Node
       objectReference: {fileID: 0}
     - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
+      propertyPath: _Weight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
+      propertyPath: _RayLenght
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
       propertyPath: _ClampMagLenght
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
       propertyPath: _NodeLayer.m_Bits
@@ -5199,8 +5299,16 @@ PrefabInstance:
       value: Node
       objectReference: {fileID: 0}
     - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
+      propertyPath: _Weight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
+      propertyPath: _RayLenght
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
       propertyPath: _ClampMagLenght
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
       propertyPath: _NodeLayer.m_Bits
@@ -5308,8 +5416,16 @@ PrefabInstance:
       value: Node
       objectReference: {fileID: 0}
     - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
+      propertyPath: _Weight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
+      propertyPath: _RayLenght
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
       propertyPath: _ClampMagLenght
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
       propertyPath: _NodeLayer.m_Bits
@@ -5417,16 +5533,20 @@ PrefabInstance:
       value: Node
       objectReference: {fileID: 0}
     - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
-      propertyPath: _RayLenght
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
-      propertyPath: StartingNode
+      propertyPath: _Weight
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
+      propertyPath: _RayLenght
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
+      propertyPath: StartingNode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
       propertyPath: _ClampMagLenght
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1061630327147944015, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
       propertyPath: _NodeLayer.m_Bits
