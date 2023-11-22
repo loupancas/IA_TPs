@@ -20,8 +20,6 @@ public class TP2_Manager : MonoBehaviour
         }
 
     }
-
-
     public List<Transform> PathFinding(List<Transform> _IaPath)
     {
         Node_Script CurrentNode = StartNode;
