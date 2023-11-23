@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     List<Vector3> _path = new List<Vector3>();
     List<Vector3> _pathFinding = new List<Vector3>();
 
+    public FiniteStateMachine _fsm;
 
     [SerializeField] List<Nodo> pathNodes = new List<Nodo>();
 
@@ -15,6 +16,11 @@ public class Enemy : MonoBehaviour
     public LayerMask obstacles;
 
     public float _speed;
+
+    private void Start()
+    {
+        _fsm = new FiniteStateMachine();
+    }
 
     private void Update()
     {
@@ -33,4 +39,12 @@ public class Enemy : MonoBehaviour
         if (Vector3.Distance(target, transform.position) <= 0.1f) _path.RemoveAt(0);
     }
 
+}
+
+
+public enum EnemyStates
+{
+    Patrol,
+    Pursuit,
+    Return
 }
