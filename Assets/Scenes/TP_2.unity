@@ -974,8 +974,9 @@ GameObject:
   - component: {fileID: 334158683}
   - component: {fileID: 334158682}
   - component: {fileID: 334158681}
+  - component: {fileID: 334158685}
   m_Layer: 0
-  m_Name: Enemy 4
+  m_Name: Enemy 4 Amarillo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1059,6 +1060,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &334158685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 334158680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c31eb0b3e910b6345b3d3bf5ce3b2096, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemiesToAlert:
+  - {fileID: 2022054380}
+  - {fileID: 602249663}
+  - {fileID: 1618969451}
+  pathNodes: []
+  patrolNodes: []
+  obstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _speed: 0
+  _viewRadius: 0
+  _viewAngle: 0
 --- !u!1 &339212421
 GameObject:
   m_ObjectHideFlags: 0
@@ -1732,8 +1757,9 @@ GameObject:
   - component: {fileID: 602249661}
   - component: {fileID: 602249660}
   - component: {fileID: 602249659}
+  - component: {fileID: 602249663}
   m_Layer: 0
-  m_Name: Enemy 2
+  m_Name: Enemy 2 Magenta
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1817,6 +1843,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &602249663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 602249658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c31eb0b3e910b6345b3d3bf5ce3b2096, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemiesToAlert:
+  - {fileID: 2022054380}
+  - {fileID: 1618969451}
+  - {fileID: 334158685}
+  pathNodes: []
+  patrolNodes: []
+  obstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _speed: 0
+  _viewRadius: 0
+  _viewAngle: 0
 --- !u!1 &688702981 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 874430827180691132, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
@@ -3931,8 +3981,9 @@ GameObject:
   - component: {fileID: 1618969449}
   - component: {fileID: 1618969448}
   - component: {fileID: 1618969447}
+  - component: {fileID: 1618969451}
   m_Layer: 0
-  m_Name: Enemy 3
+  m_Name: Enemy 3 Cyan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4016,6 +4067,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1618969451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618969446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c31eb0b3e910b6345b3d3bf5ce3b2096, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemiesToAlert:
+  - {fileID: 2022054380}
+  - {fileID: 602249663}
+  - {fileID: 334158685}
+  pathNodes: []
+  patrolNodes: []
+  obstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  _speed: 0
+  _viewRadius: 0
+  _viewAngle: 0
 --- !u!1 &1706216626 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 874430827180691132, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
@@ -5043,7 +5118,7 @@ GameObject:
   - component: {fileID: 2022054376}
   - component: {fileID: 2022054380}
   m_Layer: 0
-  m_Name: Enemy 1
+  m_Name: Enemy 1 Blanco
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5139,6 +5214,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c31eb0b3e910b6345b3d3bf5ce3b2096, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemiesToAlert:
+  - {fileID: 602249663}
+  - {fileID: 1618969451}
+  - {fileID: 334158685}
   pathNodes: []
   patrolNodes:
   - {fileID: 952214375}
@@ -5150,6 +5229,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   _speed: 2
+  _viewRadius: 0
+  _viewAngle: 0
 --- !u!1001 &2050867268
 PrefabInstance:
   m_ObjectHideFlags: 0
