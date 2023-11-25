@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class PatrolState :States
 {
-    Enemy enemy;
+    Enemy _enemy;
+    List<Vector3> enemyPath = new List<Vector3>();
+
+    public PatrolState(Enemy enemyType, List<Vector3> path)
+    {
+        _enemy = enemyType;
+        enemyPath = path;
+    }
     public override void OnEnter()
     {
         throw new System.NotImplementedException();
@@ -17,7 +24,10 @@ public class PatrolState :States
 
     public override void OnUpdate()
     {
-        throw new System.NotImplementedException();
+        if(enemyPath.Count>0)
+        {
+            _enemy.TravelPath(enemyPath);
+        }
     }
 
     

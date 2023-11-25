@@ -1082,8 +1082,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   _speed: 0
-  _viewRadius: 0
-  _viewAngle: 0
+  _viewRadius: 2
+  _viewAngle: 90
 --- !u!1 &339212421
 GameObject:
   m_ObjectHideFlags: 0
@@ -1865,8 +1865,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   _speed: 0
-  _viewRadius: 0
-  _viewAngle: 0
+  _viewRadius: 2
+  _viewAngle: 90
 --- !u!1 &688702981 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 874430827180691132, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
@@ -1915,8 +1915,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 702301666}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.31, y: -10, z: 0}
-  m_LocalScale: {x: 1, y: 2.65, z: 1}
+  m_LocalPosition: {x: 5.31, y: -9.6105, z: 0}
+  m_LocalScale: {x: 1, y: 3.4291003, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1270565061}
@@ -2810,7 +2810,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7057650418638761212, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.28
+      value: -6.09
       objectReference: {fileID: 0}
     - target: {fileID: 7057650418638761212, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4089,8 +4089,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   _speed: 0
-  _viewRadius: 0
-  _viewAngle: 0
+  _viewRadius: 2
+  _viewAngle: 90
 --- !u!1 &1706216626 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 874430827180691132, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
@@ -4938,11 +4938,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7057650418638761212, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.6
+      value: 0.29
       objectReference: {fileID: 0}
     - target: {fileID: 7057650418638761212, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.28
+      value: -6.16
       objectReference: {fileID: 0}
     - target: {fileID: 7057650418638761212, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5229,8 +5229,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   _speed: 2
-  _viewRadius: 0
-  _viewAngle: 0
+  _viewRadius: 2
+  _viewAngle: 90
 --- !u!1001 &2050867268
 PrefabInstance:
   m_ObjectHideFlags: 0

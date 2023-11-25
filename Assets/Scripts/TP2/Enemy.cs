@@ -23,6 +23,9 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         _fsm = new FiniteStateMachine();
+        _fsm.AddState(EnemyStates.Patrol, new PatrolState(this,_path));
+       // _fsm.AddState(EnemyStates.Pursuit, new PatrolState());
+        //_fsm.AddState(EnemyStates.Return, new PatrolState());
     }
 
     private void Update()
@@ -33,7 +36,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void TravelPath(List<Vector3> _path)
+    public void TravelPath(List<Vector3> _path)
     {
         Vector3 target = _path[0] - Vector3.forward;
         Vector3 dir = target - transform.position;
@@ -58,7 +61,22 @@ public class Enemy : MonoBehaviour
         Vector3 dir = end - start;
         return !Physics.Raycast(start, dir, dir.magnitude, obstacles);
     }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.white;
+        Gizmos.DrawWireSphere(transform.position, _viewRadius);
 
+        Vector3 DirA = GetAngleFromDir(_viewAngle / 2 + transform.eulerAngles.y);
+        Vector3 DirB = GetAngleFromDir(-_viewAngle / 2 + transform.eulerAngles.y);
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawLine(transform.position, transform.position + DirA.normalized * _viewRadius);
+        Gizmos.DrawLine(transform.position, transform.position + DirB.normalized * _viewRadius);
+    }
+
+    Vector3 GetAngleFromDir(float angleInDegrees)
+    {
+        return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
+    }
 }
 
 
