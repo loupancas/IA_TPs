@@ -1081,7 +1081,10 @@ MonoBehaviour:
   obstacles:
     serializedVersion: 2
     m_Bits: 0
+  currentPatrolNode: 0
   _speed: 0
+  _maxSpeed: 0
+  _maxForce: 0
   _viewRadius: 2
   _viewAngle: 90
 --- !u!1 &339212421
@@ -1864,7 +1867,10 @@ MonoBehaviour:
   obstacles:
     serializedVersion: 2
     m_Bits: 0
+  currentPatrolNode: 0
   _speed: 0
+  _maxSpeed: 0
+  _maxForce: 0
   _viewRadius: 2
   _viewAngle: 90
 --- !u!1 &688702981 stripped
@@ -4088,7 +4094,10 @@ MonoBehaviour:
   obstacles:
     serializedVersion: 2
     m_Bits: 0
+  currentPatrolNode: 0
   _speed: 0
+  _maxSpeed: 0
+  _maxForce: 0
   _viewRadius: 2
   _viewAngle: 90
 --- !u!1 &1706216626 stripped
@@ -5228,7 +5237,10 @@ MonoBehaviour:
   obstacles:
     serializedVersion: 2
     m_Bits: 8
+  currentPatrolNode: 0
   _speed: 2
+  _maxSpeed: 4
+  _maxForce: 2
   _viewRadius: 2
   _viewAngle: 90
 --- !u!1001 &2050867268

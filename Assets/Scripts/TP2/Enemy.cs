@@ -14,9 +14,13 @@ public class Enemy : MonoBehaviour
 
     public Nodo[] patrolNodes;
     public LayerMask obstacles;
+    public int currentPatrolNode;
 
+
+    Vector3 _velocity;
     public float _speed;
-
+    [SerializeField] float _maxSpeed;
+    [SerializeField] float _maxForce;
     [SerializeField] float _viewRadius;
     [SerializeField] float _viewAngle;
 
@@ -40,6 +44,7 @@ public class Enemy : MonoBehaviour
     {
         Vector3 target = _path[0] - Vector3.forward;
         Vector3 dir = target - transform.position;
+        transform.forward = dir;
         transform.position += dir.normalized * _speed * Time.deltaTime;
 
         if (Vector3.Distance(target, transform.position) <= 0.1f) _path.RemoveAt(0);
@@ -76,6 +81,22 @@ public class Enemy : MonoBehaviour
     Vector3 GetAngleFromDir(float angleInDegrees)
     {
         return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
+    }
+
+    public Vector3 Seek(Vector3 targetPos)
+    {
+        Vector3 desired = (targetPos - transform.position).normalized * _maxSpeed;
+
+        Vector3 steering = desired - _velocity;
+
+        steering = Vector3.ClampMagnitude(steering, _maxForce * Time.deltaTime);
+
+        return steering;
+    }
+
+    public void AddForce(Vector3 force)
+    {
+        _velocity = Vector3.ClampMagnitude(_velocity + force, _maxSpeed);
     }
 }
 

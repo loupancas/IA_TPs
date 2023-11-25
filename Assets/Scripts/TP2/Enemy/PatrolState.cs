@@ -30,5 +30,11 @@ public class PatrolState :States
         }
     }
 
-    
+
+    void MovementPatrolNodes()
+    {
+        _enemy.AddForce(_enemy.Seek(_enemy.patrolNodes[_enemy.currentPatrolNode].transform.position));
+
+    }
+
 }
