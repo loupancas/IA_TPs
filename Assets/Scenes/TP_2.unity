@@ -981,7 +981,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &334158681
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1082,6 +1082,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   currentPatrolNode: 0
+  _velocity: {x: 0, y: 0, z: 0}
   _speed: 0
   _maxSpeed: 0
   _maxForce: 0
@@ -1767,7 +1768,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &602249659
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1868,6 +1869,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   currentPatrolNode: 0
+  _velocity: {x: 0, y: 0, z: 0}
   _speed: 0
   _maxSpeed: 0
   _maxForce: 0
@@ -3994,7 +3996,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1618969447
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4095,6 +4097,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   currentPatrolNode: 0
+  _velocity: {x: 0, y: 0, z: 0}
   _speed: 0
   _maxSpeed: 0
   _maxForce: 0
@@ -5238,6 +5241,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   currentPatrolNode: 0
+  _velocity: {x: 0, y: 0, z: 0}
   _speed: 2
   _maxSpeed: 4
   _maxForce: 2

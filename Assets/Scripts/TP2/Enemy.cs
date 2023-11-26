@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour
     public int currentPatrolNode;
 
 
-    Vector3 _velocity;
+    public Vector3 _velocity;
     public float _speed;
     [SerializeField] float _maxSpeed;
     [SerializeField] float _maxForce;
@@ -28,12 +28,16 @@ public class Enemy : MonoBehaviour
     {
         _fsm = new FiniteStateMachine();
         _fsm.AddState(EnemyStates.Patrol, new PatrolState(this,_path));
-       // _fsm.AddState(EnemyStates.Pursuit, new PatrolState());
+        // _fsm.AddState(EnemyStates.Pursuit, new PatrolState());
         //_fsm.AddState(EnemyStates.Return, new PatrolState());
+        _fsm.ChangeState(EnemyStates.Patrol);
+
     }
 
     private void Update()
     {
+        _fsm.OnUpdate();
+
         if (_pathFinding.Count>0)
         {
             TravelPath(_pathFinding);
