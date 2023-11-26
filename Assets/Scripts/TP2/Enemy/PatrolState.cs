@@ -25,7 +25,11 @@ public class PatrolState :States
 
     public override void OnUpdate()
     {
-        
+        if (_enemy.InFieldOfView(_enemy._target.position) || _enemy._alertAllEnemies == true)
+        {
+            _enemy._pursuitTarget = true;
+            fsm.ChangeState(EnemyStates.Pursuit);
+        }
         if (_enemy.InLineOfSight(_enemy.transform.position, _enemy.patrolNodes[_enemy.currentPatrolNode].transform.position))
         {
             MovementPatrolNodes();
@@ -41,7 +45,7 @@ public class PatrolState :States
     void MovementPatrolNodes()
     {
         _enemy.AddForce(_enemy.Seek(_enemy.patrolNodes[_enemy.currentPatrolNode].transform.position));
-        if (Vector3.Distance(_enemy.patrolNodes[_enemy.currentPatrolNode].transform.position, _enemy.transform.position) <= 2f)
+        if (Vector3.Distance(_enemy.patrolNodes[_enemy.currentPatrolNode].transform.position, _enemy.transform.position) <= 2f) //le puse valor random porque si no empieza a sumar indices sin parar
             _enemy.currentPatrolNode = (_enemy.currentPatrolNode + 1) % _enemy.patrolNodes.Length;
         _enemy.transform.position += _enemy._velocity * Time.deltaTime;
         _enemy.transform.forward = _enemy._velocity;

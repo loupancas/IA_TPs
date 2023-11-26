@@ -1082,6 +1082,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   currentPatrolNode: 0
+  _alertAllEnemies: 0
+  _target: {fileID: 0}
   _velocity: {x: 0, y: 0, z: 0}
   _speed: 0
   _maxSpeed: 0
@@ -1869,6 +1871,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   currentPatrolNode: 0
+  _alertAllEnemies: 0
+  _target: {fileID: 0}
   _velocity: {x: 0, y: 0, z: 0}
   _speed: 0
   _maxSpeed: 0
@@ -4097,6 +4101,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   currentPatrolNode: 0
+  _alertAllEnemies: 0
+  _target: {fileID: 0}
   _velocity: {x: 0, y: 0, z: 0}
   _speed: 0
   _maxSpeed: 0
@@ -4543,7 +4549,7 @@ GameObject:
   - component: {fileID: 1939941590}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5241,6 +5247,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   currentPatrolNode: 0
+  _alertAllEnemies: 0
+  _target: {fileID: 1939941589}
   _velocity: {x: 0, y: 0, z: 0}
   _speed: 2
   _maxSpeed: 4

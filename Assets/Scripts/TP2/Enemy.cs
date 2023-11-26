@@ -16,6 +16,11 @@ public class Enemy : MonoBehaviour
     public LayerMask obstacles;
     public int currentPatrolNode;
 
+    public bool _alertAllEnemies;
+    public bool _pursuitTarget;
+
+    [SerializeField] public Transform _target;
+
 
     public Vector3 _velocity;
     public float _speed;
@@ -80,6 +85,15 @@ public class Enemy : MonoBehaviour
         Gizmos.color = Color.cyan;
         Gizmos.DrawLine(transform.position, transform.position + DirA.normalized * _viewRadius);
         Gizmos.DrawLine(transform.position, transform.position + DirB.normalized * _viewRadius);
+
+        Gizmos.color = Color.green;
+
+        Vector3 leftRayPos = transform.position + transform.up * 0.5f;
+        Vector3 rightRayPos = transform.position - transform.up * 0.5f;
+
+        Gizmos.DrawLine(leftRayPos, leftRayPos + transform.right * _viewRadius);
+        Gizmos.DrawLine(rightRayPos, rightRayPos + transform.right * _viewRadius);
+
     }
 
     Vector3 GetAngleFromDir(float angleInDegrees)
