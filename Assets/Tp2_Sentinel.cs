@@ -7,7 +7,7 @@ public class Tp2_Sentinel : MonoBehaviour
     [Header("References")]
     [SerializeField] TP2_Manager _Manager;
     [SerializeField] Tp2_SentinelStateMachine _StateMachine;
-    public List<Enemy> EnemiesToAlert = new List<Enemy>();
+    public List<Tp2_Sentinel> EnemiesToAlert = new List<Tp2_Sentinel>();
     [SerializeField] FieldOfViewVisualComp _FoVScript;
 
 
@@ -15,6 +15,7 @@ public class Tp2_Sentinel : MonoBehaviour
     public Node_Script NearestNode;
     public Node_Script _PlayerNearest;
     public bool EnemySpotted;
+    public bool Alert;
 
     
 

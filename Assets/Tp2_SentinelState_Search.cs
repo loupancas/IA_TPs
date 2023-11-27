@@ -20,6 +20,9 @@ public class Tp2_SentinelState_Search : State
     [SerializeField] float speed;
     [SerializeField] GameObject _Player;
 
+    //Pathfinding _pf = new Pathfinding(); del codigo A estrella del profe
+
+
     private void Start()
     {
         _Tp2StateMachine = GetComponentInParent<Tp2_SentinelStateMachine>();
@@ -39,7 +42,9 @@ public class Tp2_SentinelState_Search : State
         return this;
     }
 
-  
-
-
+    public List<Vector3> GetPathBasedOnPFTypePlayer()
+    {
+        //return _pf.AStar(StartNode(), GoalNodePlayerPos());
+        return default;
+    }
 }
