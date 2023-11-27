@@ -15,6 +15,7 @@ public class Tp2_Sentinel : MonoBehaviour
     public Node_Script NearestNode;
     public Node_Script _PlayerNearest;
     public bool EnemySpotted;
+    public bool _Alarmed;
 
     
 
@@ -35,6 +36,7 @@ public class Tp2_Sentinel : MonoBehaviour
 
         _PlayerNearest = _Manager._NearestPlayerNode;
         _StateMachine._PlayernearestNode = _PlayerNearest;
+        _StateMachine.Alarm = _Alarmed;
 
         _StateMachine.RunStateMachine();
     }

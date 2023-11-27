@@ -11,6 +11,7 @@ public class Tp2_SentinelState_Pursue : State
 
     [Header("State References")]
     [SerializeField] Tp2Sentinel_StatePatrol _SentinelPatrol;
+    [SerializeField] Tp2_SentinelState_Search _SentinelAlarm;
 
 
     [Header("Variables")]
@@ -30,6 +31,11 @@ public class Tp2_SentinelState_Pursue : State
         {
             _Tp2StateMachine.SwitchToNewState(_SentinelPatrol);
             return _SentinelPatrol;
+        }
+        else if(_Tp2StateMachine.Alarm == true && _Tp2StateMachine.Enemyspotted == false)
+        {
+            _Tp2StateMachine.SwitchToNewState(_SentinelAlarm);
+            return _SentinelAlarm;
         }
         else
         {

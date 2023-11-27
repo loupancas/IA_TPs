@@ -2619,8 +2619,11 @@ MonoBehaviour:
   _Tp2StateMachine: {fileID: 2022054383}
   _Tp2SentinelOBJ: {fileID: 2022054375}
   _SentinelPatrol: {fileID: 902307068}
+  _SentinelPursue: {fileID: 0}
   speed: 0
   _Player: {fileID: 1939941585}
+  _PlayerNode: {fileID: 0}
+  _SentinelNode: {fileID: 0}
 --- !u!1 &688702981 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 874430827180691132, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
@@ -3298,6 +3301,7 @@ MonoBehaviour:
   _Tp2StateMachine: {fileID: 2022054383}
   _Tp2SentinelOBJ: {fileID: 2022054375}
   _SentinelPursue: {fileID: 1027736001}
+  _SentinelAlarm: {fileID: 634871741}
   _PatrolWaypoints:
   - {fileID: 6512595481661850237}
   - {fileID: 18506115}
@@ -3785,6 +3789,7 @@ MonoBehaviour:
   _Tp2StateMachine: {fileID: 0}
   _Tp2SentinelOBJ: {fileID: 2022054375}
   _SentinelPatrol: {fileID: 902307068}
+  _SentinelAlarm: {fileID: 634871741}
   speed: 0.02
   _Player: {fileID: 1939941585}
 --- !u!4 &1027736002
@@ -6374,7 +6379,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1939941585}
   m_LocalRotation: {x: 0.70710677, y: 0, z: 0, w: 0.70710677}
-  m_LocalPosition: {x: -10.809999, y: -2.88, z: -1.0218424}
+  m_LocalPosition: {x: 8.53, y: 2.62, z: -1.0218424}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7080,6 +7085,7 @@ MonoBehaviour:
   Enemyspotted: 0
   _SentinelNearestNode: {fileID: 0}
   _PlayernearestNode: {fileID: 0}
+  Alarm: 0
 --- !u!114 &2022054384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7099,6 +7105,7 @@ MonoBehaviour:
   NearestNode: {fileID: 0}
   _PlayerNearest: {fileID: 0}
   EnemySpotted: 0
+  _Alarmed: 0
 --- !u!65 &2022054385
 BoxCollider:
   m_ObjectHideFlags: 0

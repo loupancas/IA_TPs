@@ -12,6 +12,7 @@ public class Tp2Sentinel_StatePatrol : State
 
     [Header("State References")]
     [SerializeField] Tp2_SentinelState_Pursue _SentinelPursue;
+    [SerializeField] Tp2_SentinelState_Search _SentinelAlarm;
     
     
     [Header("Variables")]
@@ -32,6 +33,13 @@ public class Tp2Sentinel_StatePatrol : State
         {
             _Tp2StateMachine.SwitchToNewState(_SentinelPursue);
             return _SentinelPursue;
+        }
+        else if(_Tp2StateMachine.Alarm == true && _Tp2StateMachine.Enemyspotted == false)
+        {
+            _SentinelAlarm._PlayerNode = _Tp2StateMachine._PlayernearestNode;
+            _SentinelAlarm._SentinelNode = _Tp2StateMachine._SentinelNearestNode;
+            _Tp2StateMachine.SwitchToNewState(_SentinelAlarm);
+            return _SentinelAlarm;
         }
         else
         {

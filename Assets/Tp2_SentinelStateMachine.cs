@@ -20,6 +20,7 @@ public class Tp2_SentinelStateMachine : MonoBehaviour
     public bool Enemyspotted;
     public Node_Script _SentinelNearestNode;
     public Node_Script _PlayernearestNode;
+    public bool Alarm;
 
 
     private void Start()

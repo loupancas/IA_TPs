@@ -14,11 +14,15 @@ public class Tp2_SentinelState_Search : State
 
     [Header("State References")]
     [SerializeField] Tp2Sentinel_StatePatrol _SentinelPatrol;
+    [SerializeField] Tp2_SentinelState_Pursue _SentinelPursue;
 
 
     [Header("Variables")]
     [SerializeField] float speed;
     [SerializeField] GameObject _Player;
+    public Node_Script _PlayerNode;
+    public Node_Script _SentinelNode;
+    [SerializeField] List <Transform> _SearchPath = new List<Transform>();
 
     private void Start()
     {
@@ -35,11 +39,27 @@ public class Tp2_SentinelState_Search : State
 
     public override State RunCurrentState()
     {
-
-        return this;
+        if(_Tp2StateMachine.Enemyspotted == true)
+        {
+            _Tp2StateMachine.SwitchToNewState(_SentinelPursue);
+            return _SentinelPursue;
+        }
+        else
+        {
+            AlarmLogic();
+            return this;
+        }
     }
 
-  
+  private void AlarmLogic()
+  {
+        if(_SearchPath.Count <= 0)
+        {
+            _Manager.PathFinding(_SearchPath, _SentinelNode, _PlayerNode);
+        }
+
+
+  }
 
 
 }

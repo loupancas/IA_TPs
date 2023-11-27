@@ -36,6 +36,12 @@ public class TP2_Manager : MonoBehaviour
         Node_Script CurrentNode = NodeStart;
         Node_Script CameFromNode = NodeStart;
 
+        if(NodeStart== null ||NodeEnd == null)
+        {
+            Debug.Log("Error, NodeEnd o NodeStart son nulos");
+            return null;
+        }
+
         if (CurrentNode == NodeStart)
         {
             _IaPath.Add(CurrentNode.transform);
@@ -44,6 +50,7 @@ public class TP2_Manager : MonoBehaviour
         Transform winner = null;
 
         print("Pathfinding...");
+
         while (CurrentNode != NodeEnd)
         {
             float MinDistance = float.MaxValue;
@@ -59,7 +66,7 @@ public class TP2_Manager : MonoBehaviour
                     continue;
                 }
 
-                float currentDistance = Vector2.Distance(EndNode.transform.position, _neighbor.transform.position) * _neighbor.GetComponent<Node_Script>()._Weight;
+                float currentDistance = Vector2.Distance(NodeEnd.transform.position, _neighbor.transform.position) * _neighbor.GetComponent<Node_Script>()._Weight;
                 if (currentDistance < MinDistance)
                 {
                     print("wawa");
@@ -74,7 +81,7 @@ public class TP2_Manager : MonoBehaviour
             CurrentNode = winner.GetComponent<Node_Script>();
         }
 
-        EndNode.GetComponent<Renderer>().material.color = Color.red;
+        NodeEnd.GetComponent<Renderer>().material.color = Color.red;
         return _IaPath;
     }
      
