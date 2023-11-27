@@ -18,6 +18,9 @@ public class Tp2_SentinelStateMachine : MonoBehaviour
 
     [Header("Variable logic")]
     public bool Enemyspotted;
+    public Node_Script _SentinelNearestNode;
+    public Node_Script _PlayernearestNode;
+
 
     private void Start()
     {
@@ -28,6 +31,7 @@ public class Tp2_SentinelStateMachine : MonoBehaviour
     public void update()
     {
         Enemyspotted = _Sentinel.EnemySpotted;
+        _PlayernearestNode = _Manager._NearestPlayerNode;
     }
 
     public void RunStateMachine()

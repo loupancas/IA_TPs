@@ -30,6 +30,7 @@ public class Tp2Sentinel_StatePatrol : State
     {
         if(_Tp2StateMachine.Enemyspotted == true)
         {
+            _Tp2StateMachine.SwitchToNewState(_SentinelPursue);
             return _SentinelPursue;
         }
         else
@@ -44,7 +45,7 @@ public class Tp2Sentinel_StatePatrol : State
 
     private void PatrolLogic()
     {
-        print("Patrolling...");
+        //print("Patrolling...");
         //reset del listado de waypoints
         if(CurrentWaypoint >= _PatrolWaypoints.Count)
         {

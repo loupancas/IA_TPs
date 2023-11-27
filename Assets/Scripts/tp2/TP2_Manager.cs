@@ -14,20 +14,29 @@ public class TP2_Manager : MonoBehaviour
 
     public GameObject _Player;
 
+    public PlayerComp _PlayerComp;
+
+    public Node_Script _NearestPlayerNode;
+
+    private void Start()
+    {
+        _PlayerComp = _Player.GetComponent<PlayerComp>();
+    }
+
     public void Update()
     {
         if(Input.GetKeyDown(KeyCode.P) && StartNode != null && EndNode != null) 
         {
-            PathFinding(_Path);
+            PathFinding(_Path,StartNode,EndNode);
         }
 
     }
-    public List<Transform> PathFinding(List<Transform> _IaPath)
+    public List<Transform> PathFinding(List<Transform> _IaPath,Node_Script NodeStart,Node_Script NodeEnd)
     {
-        Node_Script CurrentNode = StartNode;
-        Node_Script CameFromNode = StartNode;
+        Node_Script CurrentNode = NodeStart;
+        Node_Script CameFromNode = NodeStart;
 
-        if (CurrentNode == StartNode)
+        if (CurrentNode == NodeStart)
         {
             _IaPath.Add(CurrentNode.transform);
         }
@@ -35,7 +44,7 @@ public class TP2_Manager : MonoBehaviour
         Transform winner = null;
 
         print("Pathfinding...");
-        while (CurrentNode != EndNode)
+        while (CurrentNode != NodeEnd)
         {
             float MinDistance = float.MaxValue;
             foreach (Transform _neighbor in CurrentNode._Neighbors)
