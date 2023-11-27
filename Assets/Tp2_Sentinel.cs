@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Tp2_Sentinel : MonoBehaviour
 {
@@ -15,14 +16,11 @@ public class Tp2_Sentinel : MonoBehaviour
     public Node_Script NearestNode;
     public Node_Script _PlayerNearest;
     public bool EnemySpotted;
-<<<<<<< HEAD
+
     public bool _Alarmed;
-=======
-    public bool Alert;
->>>>>>> 5c796e52699fad5611b7e5bef351ac82cb8c6ab5
 
-    
-
+    [Header("Events")]
+    public UnityEvent AlarmTrigger;
 
     public void Start()
     {
@@ -75,5 +73,9 @@ public class Tp2_Sentinel : MonoBehaviour
 
     }
 
+    public void SetAlarmStatus()
+    {
+        _Alarmed = true;
+    }
 
 }

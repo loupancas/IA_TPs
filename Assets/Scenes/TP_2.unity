@@ -2619,11 +2619,14 @@ MonoBehaviour:
   _Tp2StateMachine: {fileID: 2022054383}
   _Tp2SentinelOBJ: {fileID: 2022054375}
   _SentinelPatrol: {fileID: 902307068}
-  _SentinelPursue: {fileID: 0}
-  speed: 0
+  _SentinelPursue: {fileID: 1027736001}
+  speed: 0.02
+  ArriveDist: 0.2
   _Player: {fileID: 1939941585}
   _PlayerNode: {fileID: 0}
   _SentinelNode: {fileID: 0}
+  _SearchPath: []
+  ReachedDest: 0
 --- !u!1 &688702981 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 874430827180691132, guid: fd1f2fe9d89b7f94f9399e06f7a4099f, type: 3}
@@ -3308,8 +3311,13 @@ MonoBehaviour:
   - {fileID: 1487825156}
   - {fileID: 393976281}
   - {fileID: 952214372}
+  _ReturnWaypoints: []
   Speed: 0.02
   ArriveDist: 0.3
+  _Obstacles:
+    serializedVersion: 2
+    m_Bits: 8
+  Returned: 0
 --- !u!4 &902307069
 Transform:
   m_ObjectHideFlags: 0
@@ -7055,7 +7063,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2022054375}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.35, y: 3.8, z: -1.0218424}
+  m_LocalPosition: {x: -8.12, y: -0.53, z: -1.0218424}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

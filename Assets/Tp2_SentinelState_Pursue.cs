@@ -34,6 +34,9 @@ public class Tp2_SentinelState_Pursue : State
         }
         else if(_Tp2StateMachine.Alarm == true && _Tp2StateMachine.Enemyspotted == false)
         {
+            _SentinelAlarm._PlayerNode = _Tp2StateMachine._PlayernearestNode;
+            _SentinelAlarm._SentinelNode = _Tp2StateMachine._SentinelNearestNode;
+            _SentinelAlarm.Reset();
             _Tp2StateMachine.SwitchToNewState(_SentinelAlarm);
             return _SentinelAlarm;
         }

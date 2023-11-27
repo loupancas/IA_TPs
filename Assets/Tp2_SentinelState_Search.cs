@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Tp2_SentinelState_Search : State
@@ -18,11 +20,12 @@ public class Tp2_SentinelState_Search : State
 
 
     [Header("Variables")]
-    [SerializeField] float speed;
+    [SerializeField] float speed,ArriveDist;
     [SerializeField] GameObject _Player;
     public Node_Script _PlayerNode;
     public Node_Script _SentinelNode;
     [SerializeField] List <Transform> _SearchPath = new List<Transform>();
+    public bool ReachedDest = false;
 
     //Pathfinding _pf = new Pathfinding(); del codigo A estrella del profe
 
@@ -42,10 +45,26 @@ public class Tp2_SentinelState_Search : State
 
     public override State RunCurrentState()
     {
-        if(_Tp2StateMachine.Enemyspotted == true)
+         if (CurrentWaypoints < _SearchPath.Count)
+         {
+                ReachedDest = false;
+         }
+
+        if (_Tp2StateMachine.Enemyspotted == true)
         {
             _Tp2StateMachine.SwitchToNewState(_SentinelPursue);
+            _Tp2StateMachine.Alarm = false;
+            Reset();
             return _SentinelPursue;
+        }
+        else if(ReachedDest == true)
+        {
+            _Tp2StateMachine.SwitchToNewState(_SentinelPatrol);
+            _Tp2StateMachine.Alarm = false;
+            _Tp2SentinelOBJ.GetComponent<Tp2_Sentinel>()._Alarmed= false;
+            _SentinelPatrol.ReturnPatrol(_SearchPath);
+            Reset();
+            return _SentinelPatrol;
         }
         else
         {
@@ -54,23 +73,49 @@ public class Tp2_SentinelState_Search : State
         }
     }
 
-<<<<<<< HEAD
+    // <<<<<<< HEAD
+
+    int CurrentWaypoints;
   private void AlarmLogic()
   {
         if(_SearchPath.Count <= 0)
         {
             _Manager.PathFinding(_SearchPath, _SentinelNode, _PlayerNode);
+            CurrentWaypoints = 0;
         }
 
+        if (CurrentWaypoints >= _SearchPath.Count)
+        {
+            CurrentWaypoints = _SearchPath.Count;
+            ReachedDest = true;
 
+        }
+        else
+        {
+            //calculo distancia
+            float distance = Vector2.Distance(_SearchPath[CurrentWaypoints].transform.position, _Tp2SentinelOBJ.transform.position);
+
+            Vector3 Director = (_SearchPath[CurrentWaypoints].transform.position - _Tp2SentinelOBJ.transform.position) * speed;
+
+            float DirectorAngle = MathF.Atan2(Director.y, Director.x) * Mathf.Rad2Deg;
+
+            _Tp2SentinelOBJ.transform.position += Vector3.ClampMagnitude(Director, speed);
+
+            _Tp2SentinelOBJ.transform.rotation = Quaternion.Euler(Vector3.forward * DirectorAngle);
+
+            if (distance < ArriveDist)
+            {
+                CurrentWaypoints++;
+            }
+        }
   }
 
-
-=======
-    public List<Vector3> GetPathBasedOnPFTypePlayer()
+    public void Reset()
     {
-        //return _pf.AStar(StartNode(), GoalNodePlayerPos());
-        return default;
+        CurrentWaypoints = 0;
+        ReachedDest = false;
+        _SearchPath.Clear();
+
     }
->>>>>>> 5c796e52699fad5611b7e5bef351ac82cb8c6ab5
+
 }
