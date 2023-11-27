@@ -13,7 +13,7 @@ public class Tp2_SentinelState_Pursue : State
     [SerializeField] Tp2Sentinel_StatePatrol _SentinelPatrol;
     [SerializeField] Tp2_SentinelState_Search _SentinelAlarm;
 
-
+    Tp2_Sentinel _enemy;
     [Header("Variables")]
     [SerializeField] float speed;
     [SerializeField] GameObject _Player;
@@ -40,6 +40,12 @@ public class Tp2_SentinelState_Pursue : State
         else
         {
             PursueLogic();
+            
+            /*for (int i = 0; i < _enemy.EnemiesToAlert.Count; i++)
+            {
+                _enemy.EnemiesToAlert[i].Alert = true;
+                //logica para cambiar cambiar estado de los otros enemigos
+            }*/
             return this;
         }
     }

@@ -24,6 +24,9 @@ public class Tp2_SentinelState_Search : State
     public Node_Script _SentinelNode;
     [SerializeField] List <Transform> _SearchPath = new List<Transform>();
 
+    //Pathfinding _pf = new Pathfinding(); del codigo A estrella del profe
+
+
     private void Start()
     {
         _Tp2StateMachine = GetComponentInParent<Tp2_SentinelStateMachine>();
@@ -51,6 +54,7 @@ public class Tp2_SentinelState_Search : State
         }
     }
 
+<<<<<<< HEAD
   private void AlarmLogic()
   {
         if(_SearchPath.Count <= 0)
@@ -62,4 +66,11 @@ public class Tp2_SentinelState_Search : State
   }
 
 
+=======
+    public List<Vector3> GetPathBasedOnPFTypePlayer()
+    {
+        //return _pf.AStar(StartNode(), GoalNodePlayerPos());
+        return default;
+    }
+>>>>>>> 5c796e52699fad5611b7e5bef351ac82cb8c6ab5
 }
