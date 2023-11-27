@@ -5,7 +5,14 @@ using UnityEngine;
 
 public class PlayerComp : MonoBehaviour
 {
-   
+    [SerializeField] TP2_Manager _Manager;
+
+    public void Start()
+    {
+        _Manager = FindObjectOfType<TP2_Manager>();
+        _Manager._Player = this.gameObject;
+    }
+
     // Update is called once per frame
     void Update()
     {

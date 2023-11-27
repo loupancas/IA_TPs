@@ -5,14 +5,16 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     PathFinding pathFinding =new PathFinding();
-    List<Vector3> _path = new List<Vector3>();
-    List<Vector3> _pathFinding = new List<Vector3>();
+    public TP2_Manager _Manager;
+
+    [SerializeField] List<Vector3> _path = new List<Vector3>();
+   [SerializeField] List<Vector3> _pathFinding = new List<Vector3>();
     public List<Enemy> EnemiesToAlert = new List<Enemy>();
     public FiniteStateMachine _fsm;
 
-    [SerializeField] List<Nodo> pathNodes = new List<Nodo>();
+   
 
-    public Nodo[] patrolNodes;
+    public Node_Script[] patrolNodes;
     public LayerMask obstacles;
     public int currentPatrolNode;
 
@@ -20,6 +22,7 @@ public class Enemy : MonoBehaviour
     public bool _pursuitTarget;
 
     [SerializeField] public Transform _target;
+    [SerializeField] public Rigidbody _Rb;
 
 
     public Vector3 _velocity;
@@ -37,6 +40,11 @@ public class Enemy : MonoBehaviour
         //_fsm.AddState(EnemyStates.Return, new PatrolState());
         _fsm.ChangeState(EnemyStates.Patrol);
 
+        _Manager = FindObjectOfType<TP2_Manager>();
+        _Rb= GetComponent<Rigidbody>();
+        _Rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY;
+
+ 
     }
 
     private void Update()

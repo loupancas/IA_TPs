@@ -12,6 +12,8 @@ public class TP2_Manager : MonoBehaviour
 
     public List<Transform> _Path = new List<Transform>();
 
+    public GameObject _Player;
+
     public void Update()
     {
         if(Input.GetKeyDown(KeyCode.P) && StartNode != null && EndNode != null) 
