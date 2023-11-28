@@ -28,6 +28,7 @@ public class Tp2_Sentinel : MonoBehaviour
         _StateMachine = GetComponent<Tp2_SentinelStateMachine>();
         _FoVScript= GetComponent<FieldOfViewVisualComp>();
         StartCoroutine(CoorutineFindNearestNode());
+        _Manager._SentinelList.Add(this);
     }
 
     public void Update()
@@ -40,6 +41,10 @@ public class Tp2_Sentinel : MonoBehaviour
         _StateMachine._PlayernearestNode = _PlayerNearest;
         _StateMachine.Alarm = _Alarmed;
 
+        if (EnemySpotted)
+        {
+            _Manager.RaiseAlarm(this);
+        }
         _StateMachine.RunStateMachine();
     }
 

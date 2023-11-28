@@ -7,7 +7,8 @@ public class TP2_Manager : MonoBehaviour
     [Header("Variables")]
 
     public List<Node_Script> _NodeList= new List<Node_Script>();
-
+    public List<Tp2_Sentinel> _SentinelList = new List<Tp2_Sentinel>();
+ 
     public Node_Script StartNode, EndNode;
 
     public List<Transform> _Path = new List<Transform>();
@@ -85,5 +86,21 @@ public class TP2_Manager : MonoBehaviour
         return _IaPath;
     }
      
+    public void RaiseAlarm(Tp2_Sentinel Caller)
+    {
+        foreach(Tp2_Sentinel Guard in _SentinelList)
+        {
+            if(Guard == Caller)
+            {
+                continue;
+            }
+            else
+            {
+                Guard._Alarmed = true;
+            }
+        }
+
+
+    }
 
 }

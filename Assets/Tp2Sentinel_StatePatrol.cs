@@ -110,12 +110,10 @@ public class Tp2Sentinel_StatePatrol : State
         }
         else
         {
-
             if (CurrentReturnWaypoint >= _ReturnWaypoints.Count)
             {
                 Returned = true;
             }
-
             //distancia
             float distance = Vector3.Distance(_ReturnWaypoints[CurrentReturnWaypoint].transform.position, _Tp2SentinelOBJ.transform.position);
             
