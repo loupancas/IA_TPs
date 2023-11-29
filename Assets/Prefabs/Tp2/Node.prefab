@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4589855255345802285}
   - component: {fileID: 1061630327147944015}
   - component: {fileID: 2076749459}
-  - component: {fileID: -3960030080861563766}
   m_Layer: 7
   m_Name: Node
   m_TagString: Untagged
@@ -100,15 +99,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Neighbors: []
-  _NodeLayer:
+  _Obstacles:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   _RayLenght: 10
   _Renderer: {fileID: 0}
   StartingNode: 0
   EndingNode: 0
   NodeTransform: {fileID: 7057650418638761212}
   Collider: {fileID: 0}
+  _Weight: 0
 --- !u!58 &2076749459
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -125,21 +125,3 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &-3960030080861563766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 874430827180691132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e28fd5a7d2dac564c9a65ce54ea197c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _neighbors:
-  - {fileID: 0}
-  - {fileID: 0}
-  obstacleMask:
-    serializedVersion: 2
-    m_Bits: 8
