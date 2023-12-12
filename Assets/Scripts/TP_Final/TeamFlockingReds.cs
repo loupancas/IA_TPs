@@ -29,7 +29,7 @@ public class TeamFlockingReds : SteeringAgent
         //Move();
 
 
-        if (Vector3.Distance(transform.position, _target.position)> 0.1f)
+        if (Vector3.Distance(transform.position, _target.position)> 1f)
         {
             Vector3 moveDirection = (_target.position - transform.position).normalized;
             transform.position += moveDirection * speed * Time.deltaTime;
